@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Asap+Condensed&display=swap');
+
+.icon {
+  width : 25% ;
+}
+
+.low-op {
+  opacity: 0.3 ;
+  font-family: 'Asap Condensed', sans-serif;
+
+
+}
+
+div {
+  height: 450px;
+}
