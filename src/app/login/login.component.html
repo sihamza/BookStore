@@ -1,21 +1,30 @@
 <div class="container">
 <mat-card class="mat-elevation-z2 m-5 p-5 blueB" >
-  <p class="text-center full-w" >
-     <span class="text-center full-w"> You need to authenticate to continue </span>
+  <p class="text-center full-w text-muted font-italic" >
+    <ng-container *ngIf="error ; else errorMsg">
+      <span [ngClass]="{'danger-text': error}">
+       You provided a wrong username or password !
+     </span>
+    </ng-container>
+    <ng-template #errorMsg>
+      <span class="prime-text">
+        You need to authenticate to continue
+      </span>
+    </ng-template>
   </p>
   <mat-divider class="p-3" [inset]="true" ></mat-divider>
   <p>
-    <mat-form-field appearance="outline" class="full-w" >
+    <mat-form-field appearance="outline" class="full-w"  >
       <mat-label> Enter your username </mat-label>
-      <mat-icon matPrefix class="m-2" color="primary" > account_circle </mat-icon>
-      <input matInput type="text" placeholder="Username">
+      <mat-icon matPrefix class="m-2"  [color]=" error ? 'warn' : 'primary'" > account_circle </mat-icon>
+      <input matInput (focus)="error = false " type="text" placeholder="Username">
     </mat-form-field>
   </p>
 <p>
   <mat-form-field appearance="outline" class="full-w" >
     <mat-label> Enter your password </mat-label>
-    <mat-icon matPrefix class="m-2" color="primary" > vpn_key </mat-icon>
-    <input matInput type="password" placeholder="Password">
+    <mat-icon matPrefix class="m-2" [color]=" error ? 'warn' : 'primary'" > vpn_key </mat-icon>
+    <input matInput (focus)="error = false " type="password" placeholder="Password">
   </mat-form-field>
 </p>
 <mat-card-actions class="d-flex flex-row-reverse">
