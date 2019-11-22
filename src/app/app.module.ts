@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './material.module';
 import { LoginComponent } from './login/login.component';
 import { ErrorComponent } from './error/error.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 const firebaseConfig = {
@@ -27,7 +28,8 @@ const firebaseConfig = {
   declarations: [
   AppComponent,
   LoginComponent,
-  ErrorComponent],
+  ErrorComponent,
+  DashboardComponent],
   imports: [
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule ,

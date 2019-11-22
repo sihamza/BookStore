@@ -13,6 +13,15 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   height:  100% ;
 }
 
+.p80-w {
+  width : 80% ;
+}
+
+.p80-h {
+  height:  80% ;
+}
+
+
 .blueB { border-left: 4px solid #3f51b5 ; }
 
 .prime-text { color : #3f51b5 ; }
