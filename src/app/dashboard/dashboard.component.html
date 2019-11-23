@@ -1,4 +1,8 @@
 <div class="full-w p-3">
-  <mat-card class="mat-elevation-z2 full-w full-h p-5 blueB" >
+  <mat-card class="mat-elevation-z2 full-w p-4 blueB ">
+        <mat-card-subtitle class="d-flex align-items-center">
+          <mat-icon class="mr-2" color="primary"> home </mat-icon> Welcome {{ username }} to BookStore's dashboard
+        </mat-card-subtitle>
+        <button mat-stroked-button class="" (click)="openDialog()" color="accent"> <mat-icon> post_add</mat-icon> New Book </button>
     </mat-card>
 </div>

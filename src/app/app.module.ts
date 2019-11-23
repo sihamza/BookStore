@@ -11,6 +11,7 @@ import { MaterialModule } from './material.module';
 import { LoginComponent } from './login/login.component';
 import { ErrorComponent } from './error/error.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AjouterComponent } from './ajouter/ajouter.component';
 
 
 const firebaseConfig = {
@@ -29,7 +30,8 @@ const firebaseConfig = {
   AppComponent,
   LoginComponent,
   ErrorComponent,
-  DashboardComponent],
+  DashboardComponent,
+  AjouterComponent],
   imports: [
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule ,

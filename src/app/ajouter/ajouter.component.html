@@ -1,0 +1,55 @@
+<div class="container" [ngClass]="{'right-panel-active': api }" id="container">
+	<div class="form-container sign-up-container">
+		<form action="#">
+			<h1>Create Account</h1>
+			<div class="social-container">
+				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+				<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+			</div>
+			<span>or use your email for registration</span>
+      <mat-form-field  class="full-w"  >
+        <mat-label> Enter your username </mat-label>
+        <input matInput (focus)="error = false " type="text" placeholder="Username">
+      </mat-form-field>
+      <mat-form-field  class="full-w"  >
+        <mat-label> Enter your username </mat-label>
+        <input matInput (focus)="error = false " type="text" placeholder="Username">
+      </mat-form-field>
+      <mat-form-field  class="full-w"  >
+        <mat-label> Enter your username </mat-label>
+        <input matInput (focus)="error = false " type="text" placeholder="Username">
+      </mat-form-field>
+      <button mat-button mat-raised-button (click)="api = !api" class="m-2" color="primary"> <mat-icon> add_box </mat-icon> Sign Up </button>
+		</form>
+	</div>
+	<div class="form-container sign-in-container">
+		<form action="#">
+			<h1>Sign in</h1>
+			<div class="social-container">
+				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+				<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+			</div>
+			<span>or use your account</span>
+			<input type="email" placeholder="Email" />
+			<input type="password" placeholder="Password" />
+			<a href="#">Forgot your password?</a>
+      <button mat-button mat-raised-button (click)="api = !api" class="m-2" color="primary"> <mat-icon> add_box </mat-icon> Sign Up </button>
+		</form>
+	</div>
+	<div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-left">
+				<h1>Welcome Back!</h1>
+				<p>To keep connected with us please login with your personal info</p>
+        <button mat-button mat-raised-button (click)="api = !api" class="m-2"> <mat-icon> add_box </mat-icon> Sign Up </button>
+			</div>
+			<div class="overlay-panel overlay-right">
+				<h1>Hello, Friend!</h1>
+				<p>Enter your personal details and start journey with us</p>
+        <button mat-button mat-raised-button (click)="api = !api" class="m-2" > <mat-icon> add_box </mat-icon> Sign Up </button>
+			</div>
+		</div>
+	</div>
+</div>
