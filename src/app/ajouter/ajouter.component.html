@@ -26,13 +26,15 @@
 	<div class="form-container sign-in-container">
 		<form action="#">
 			<h1>Sign in</h1>
-			<div class="social-container">
-				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-				<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-			</div>
 			<span>or use your account</span>
-			<input type="email" placeholder="Email" />
+			<mat-form-field class="full-w" >
+	 		<input matInput placeholder="State" (keyup)="getSuggestions(search.value)" #search aria-label="State" [matAutocomplete]="auto" >
+			<mat-autocomplete #auto>
+  			<mat-option *ngFor="let book of suggestions" [value]="book['volumeInfo']['title']">
+    			{{ book['volumeInfo']['title'] }}
+  			</mat-option>
+			</mat-autocomplete>
+			</mat-form-field>
 			<input type="password" placeholder="Password" />
 			<a href="#">Forgot your password?</a>
       <button mat-button mat-raised-button (click)="api = !api" class="m-2" color="primary"> <mat-icon> add_box </mat-icon> Sign Up </button>
@@ -41,14 +43,14 @@
 	<div class="overlay-container">
 		<div class="overlay">
 			<div class="overlay-panel overlay-left">
-				<h1>Welcome Back!</h1>
-				<p>To keep connected with us please login with your personal info</p>
-        <button mat-button mat-raised-button (click)="api = !api" class="m-2"> <mat-icon> add_box </mat-icon> Sign Up </button>
+				<h1>Add a Google Book</h1>
+				<p>Select a book from the API of Google books </p>
+        <button mat-button mat-raised-button (click)="api = !api" class="m-2"> <mat-icon> add_box </mat-icon> New Book </button>
 			</div>
 			<div class="overlay-panel overlay-right">
-				<h1>Hello, Friend!</h1>
-				<p>Enter your personal details and start journey with us</p>
-        <button mat-button mat-raised-button (click)="api = !api" class="m-2" > <mat-icon> add_box </mat-icon> Sign Up </button>
+				<h1>Add a Custom Book</h1>
+				<p>Enter all the book's details manually</p>
+        <button mat-button mat-raised-button (click)="api = !api" class="m-2" > <mat-icon> add_box </mat-icon> New Book </button>
 			</div>
 		</div>
 	</div>

@@ -8,11 +8,19 @@ import { GbooksService } from "../gbooks.service" ;
 export class AjouterComponent implements OnInit {
 
   api : boolean = true ;
+  search : string = "harry" ;
+  suggestions = [] ;
+  //custom_book = { }
 
   constructor(private books : GbooksService ) { }
 
   ngOnInit() {
-    this.books.getBooks("Harry") ;
+    //this.suggestions = await this.books.getBooks(this.search) ;
   }
+
+  async getSuggestions(search) {
+     this.suggestions = await this.books.getBooks(search) ;
+  }
+
 
 }

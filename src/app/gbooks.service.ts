@@ -6,8 +6,9 @@ import { Injectable } from '@angular/core';
 export class GbooksService {
 
   async getBooks(query:string) {
-    var books = await fetch(`./api?q=${query}`).then(( response ) => response.json()) ;
-    console.log(books) ;
+    var books = await fetch(`./api?q=intitle:${query}`).then(( response ) =>  response.json() ) ;
+    console.log(books['items']) ;
+    return books['items'] ;
   }
 
   constructor() { }
