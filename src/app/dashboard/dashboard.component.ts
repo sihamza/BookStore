@@ -12,7 +12,7 @@ export class DashboardComponent implements OnInit {
 
   username : String = 'Chocofoxy' ;
   date : Date = new Date() ;
-  stored_books : array = [] ;
+  stored_books = [] ;
 
   constructor(public dialog: MatDialog , private books : GbooksService ) { }
 

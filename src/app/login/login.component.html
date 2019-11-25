@@ -17,18 +17,18 @@
     <mat-form-field appearance="outline" class="full-w"  >
       <mat-label> Enter your username </mat-label>
       <mat-icon matPrefix class="m-2"  [color]=" error ? 'warn' : 'primary'" > account_circle </mat-icon>
-      <input matInput (focus)="error = false " type="text" placeholder="Username">
+      <input matInput (focus)="error = false " [(ngModel)]="email" type="text" placeholder="Username">
     </mat-form-field>
   </p>
 <p>
   <mat-form-field appearance="outline" class="full-w" >
     <mat-label> Enter your password </mat-label>
     <mat-icon matPrefix class="m-2" [color]=" error ? 'warn' : 'primary'" > vpn_key </mat-icon>
-    <input matInput (focus)="error = false " type="password" placeholder="Password">
+    <input matInput (focus)="error = false " [(ngModel)]="password" type="password" placeholder="Password">
   </mat-form-field>
 </p>
 <mat-card-actions class="d-flex flex-row-reverse">
-<button mat-button mat-raised-button class="md-warn" color="primary"> <mat-icon> lock_open </mat-icon> Log in</button>
+<button mat-button mat-raised-button (click)="login()" class="md-warn" color="primary"> <mat-icon> lock_open </mat-icon> Log in</button>
 </mat-card-actions>
 </mat-card>
 </div>

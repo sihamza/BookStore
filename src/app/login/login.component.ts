@@ -8,27 +8,22 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-
+  error = false ;
   email: string;
   password: string;
 
   constructor(public authService: AuthService) {}
-  
-    signup() {
-      this.authService.signup(this.email, this.password);
-      this.email = this.password = '';
-    }
 
-    login() {
-      this.authService.login(this.email, this.password);
-      this.email = this.password = '';
+
+    async login() {
+      this.error = !(await this.authService.login(this.email, this.password));
     }
 
     logout() {
-      this.authService.logout();   
+      this.authService.logout();
     }
 
-   
+
 
 
 }

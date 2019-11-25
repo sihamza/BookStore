@@ -27,14 +27,15 @@ export class AuthService {
    }
 
    login(email: string, password: string){
-     this.firebaseAuth
+     return this.firebaseAuth
      .auth
      .signInWithEmailAndPassword(email, password)
-     .then(value => {
-       console.log('Nice, it worked!');
+     .then( () => {
+       return true ;
      })
      .catch(err => {
-       console.log('Something went wrong:',err.message);
+      console.log(err) ;
+      return false ;
      });
    }
 
@@ -43,4 +44,11 @@ export class AuthService {
      .auth
      .signOut();
    }
+
+   isloged() {
+     return this.firebaseAuth.auth.currentUser ? true : false ;
+   }
+
+
+
 }
