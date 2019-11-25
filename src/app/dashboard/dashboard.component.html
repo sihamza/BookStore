@@ -20,4 +20,33 @@
     <input matInput placeholder="Age">
   </mat-form-field>
 </mat-expansion-panel>
+<mat-card class="mat-elevation-z2 full-w p-4 mt-3 blueB ">
+  <div class="container">
+    <mat-form-field appearance="outline" class="full-w"  >
+      <mat-label> Enter your username </mat-label>
+      <mat-icon matPrefix class="m-2"  [color]=" error ? 'warn' : 'primary'" > account_circle </mat-icon>
+      <input matInput (focus)="error = false " type="text" placeholder="Username">
+    </mat-form-field>
+    </div>
+    <mat-divider class="p-3" [inset]="true" ></mat-divider>
+    <div *ngFor="let book of stored_books" class="m-5" [matTooltip]="book.volumeInfo.title" matTooltipClass="tooltip-class" >
+      <div class="book-wrap">
+<div class="book">
+  <div class="shadow"></div>
+  <div class="body"></div>
+  <div class="cover">
+
+              <a [routerLink]="['/book/bob']" class="ajax-popup-link">
+
+              <img [src]="book.volumeInfo.imageLinks.thumbnail" alt="book-cover">
+            <span class="border"></span>
+
+    </a>
+    <div class="edge"><div class="edge-border"></div></div>
+
+          </div>
+</div>
+</div>
+    </div>
+  </mat-card>
 </div>
