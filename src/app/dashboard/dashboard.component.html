@@ -5,7 +5,8 @@
           <span class="full-w"> Welcome {{ username }} to BookStore's dashboard </span>
           <span> {{ date | date:'yyyy/MM/dd' }} </span>
         </mat-card-subtitle>
-        <button mat-stroked-button class="" (click)="openDialog()" color="accent"> <mat-icon> post_add</mat-icon> New Book </button>
+        <button mat-stroked-button  (click)="openDialog()" color="accent"> <mat-icon> post_add</mat-icon> New Book </button>
+        <button mat-stroked-button  class="ml-2" *ngIf="loged" (click)="logout()"  color="warn"><mat-icon> power_settings_new </mat-icon> </button>
     </mat-card>
   <mat-expansion-panel class="mt-3 blueB">
   <mat-expansion-panel-header class="full-w d-flex align-items-center prime-text">

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,11 +13,14 @@ export class LoginComponent {
   email: string;
   password: string;
 
-  constructor(public authService: AuthService) {}
+  constructor(public authService: AuthService , private router: Router ) {}
 
 
     async login() {
       this.error = !(await this.authService.login(this.email, this.password));
+      if ( !this.error )
+      this.router.navigate(['dashboard']);
+
     }
 
     logout() {
