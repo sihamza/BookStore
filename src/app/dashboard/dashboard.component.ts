@@ -10,6 +10,7 @@ import { AjouterComponent } from '../ajouter/ajouter.component';
 export class DashboardComponent implements OnInit {
 
   username : String = 'Chocofoxy' ;
+  date : Date = new Date() ;
 
   constructor(public dialog: MatDialog) { }
 

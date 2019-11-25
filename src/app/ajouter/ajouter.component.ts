@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { GbooksService } from "../gbooks.service" ;
 @Component({
   selector: 'app-ajouter',
   templateUrl: './ajouter.component.html',
@@ -9,9 +9,10 @@ export class AjouterComponent implements OnInit {
 
   api : boolean = true ;
 
-  constructor() { }
+  constructor(private books : GbooksService ) { }
 
   ngOnInit() {
+    this.books.getBooks("Harry") ;
   }
 
 }

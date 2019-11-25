@@ -1,8 +1,23 @@
 <div class="full-w p-3">
   <mat-card class="mat-elevation-z2 full-w p-4 blueB ">
         <mat-card-subtitle class="d-flex align-items-center">
-          <mat-icon class="mr-2" color="primary"> home </mat-icon> Welcome {{ username }} to BookStore's dashboard
+          <mat-icon class="mr-2" color="primary"> home </mat-icon>
+          <span class="full-w"> Welcome {{ username }} to BookStore's dashboard </span>
+          <span> {{ date | date:'yyyy/MM/dd' }} </span>
         </mat-card-subtitle>
         <button mat-stroked-button class="" (click)="openDialog()" color="accent"> <mat-icon> post_add</mat-icon> New Book </button>
     </mat-card>
+  <mat-expansion-panel class="mt-3 blueB">
+  <mat-expansion-panel-header class="full-w d-flex align-items-center prime-text">
+        <mat-icon class="mr-2" color="primary"> trending_up </mat-icon> Stock's Analysis
+  </mat-expansion-panel-header>
+
+  <mat-form-field>
+    <input matInput placeholder="First name">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Age">
+  </mat-form-field>
+</mat-expansion-panel>
 </div>
