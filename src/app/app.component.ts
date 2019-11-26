@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 import { Component } from '@angular/core';
 import { AuthService } from './auth.service';
-=======
-import { Component , OnInit } from '@angular/core';
-
->>>>>>> bc32ba125b1f8433eeb72947f30eaffb5169f16a
 
 @Component({
   selector: 'app-root',
@@ -13,7 +8,6 @@ import { Component , OnInit } from '@angular/core';
 })
 export class AppComponent {
   title = 'BookStore';
-<<<<<<< HEAD
   loged : boolean = false ;
 
   email: string;
@@ -25,10 +19,4 @@ export class AppComponent {
     this.authService.logout();   
   }
 
-=======
-
-  constructor() {}
-
-
->>>>>>> bc32ba125b1f8433eeb72947f30eaffb5169f16a
 }
