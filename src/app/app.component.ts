@@ -1,4 +1,4 @@
-import { Component , OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthService } from './auth.service';
 
 @Component({
@@ -10,16 +10,13 @@ export class AppComponent {
   title = 'BookStore';
   loged : boolean = false ;
 
+  email: string;
+  password: string;
+
   constructor(public authService: AuthService) {}
-
-  async ngOnInit() {
-    this.loged = await this.authService.isloged() ;
-  }
-
+  
   logout() {
-    this.authService.logout();
+    this.authService.logout();   
   }
-
-
 
 }

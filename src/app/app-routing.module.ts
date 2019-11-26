@@ -5,14 +5,14 @@ import { LoginComponent } from './login/login.component' ;
 import { ErrorComponent } from './error/error.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AjouterComponent } from './ajouter/ajouter.component';
-
+import { AuthGuard } from './core/auth.guard';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent } ,
-  { path: 'dashboard', component: DashboardComponent } ,
-  { path: 'ajouter', component: ErrorComponent } ,
-  { path: 'ajouter', component: AjouterComponent } ,
-  { path: '**', component: ErrorComponent }
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] } ,
+  { path: 'ajouter', component: ErrorComponent, canActivate: [AuthGuard] } ,
+  { path: 'ajouter', component: AjouterComponent, canActivate: [AuthGuard] } ,
+  { path: '**', component: ErrorComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

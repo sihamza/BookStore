@@ -30,7 +30,7 @@ export class AuthService {
      return this.firebaseAuth
      .auth
      .signInWithEmailAndPassword(email, password)
-     .then( () => {
+     .then( () => { console.log('Success!');
        return true ;
      })
      .catch(err => {

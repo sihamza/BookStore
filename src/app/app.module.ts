@@ -13,6 +13,7 @@ import { LoginComponent } from './login/login.component';
 import { ErrorComponent } from './error/error.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AjouterComponent } from './ajouter/ajouter.component';
+import { AuthGuard } from './core/auth.guard';
 
 
 
@@ -34,7 +35,7 @@ import { AjouterComponent } from './ajouter/ajouter.component';
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebase)
   ],
-  providers: [AuthService],
+  providers: [AuthService,AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
