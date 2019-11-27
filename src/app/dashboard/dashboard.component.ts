@@ -16,6 +16,7 @@ export class DashboardComponent implements OnInit {
   loged = true ;
   date : Date = new Date() ;
   stored_books = [] ;
+  search ;
 
   constructor(public dialog: MatDialog , private books : GbooksService , private authService: AuthService , private router: Router  ) { }
 

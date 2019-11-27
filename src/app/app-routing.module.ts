@@ -12,7 +12,7 @@ const appRoutes: Routes = [
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] } ,
   { path: 'ajouter', component: ErrorComponent, canActivate: [AuthGuard] } ,
   { path: 'ajouter', component: AjouterComponent, canActivate: [AuthGuard] } ,
-  { path: '**', component: ErrorComponent, canActivate: [AuthGuard] }
+  { path: '**', component: ErrorComponent }
 ];
 
 @NgModule({

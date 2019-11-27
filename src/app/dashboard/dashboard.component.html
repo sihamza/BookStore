@@ -24,18 +24,22 @@
 <mat-card class="mat-elevation-z2 full-w p-4 mt-3 blueB ">
   <div class="container">
     <mat-form-field appearance="outline" class="full-w"  >
-      <mat-label> Enter your username </mat-label>
-      <mat-icon matPrefix class="m-2"  [color]=" error ? 'warn' : 'primary'" > account_circle </mat-icon>
-      <input matInput (focus)="error = false " type="text" placeholder="Username">
+      <mat-label> Search for a book </mat-label>
+      <mat-icon matPrefix class="m-2"  [color]=" error ? 'warn' : 'primary'" > search </mat-icon>
+      <input matInput (focus)="error = false " [(ngModel)]="search" type="search" placeholder="ex : Harry Potter">
+      <button mat-button *ngIf="search" matSuffix mat-icon-button aria-label="Clear" (click)="search=''">
+        <mat-icon>close</mat-icon>
+      </button>
     </mat-form-field>
     </div>
     <mat-divider class="p-3" [inset]="true" ></mat-divider>
-    <div *ngFor="let book of stored_books" class="m-5" [matTooltip]="book.volumeInfo.title" matTooltipClass="tooltip-class" >
-      <div class="book-wrap">
-<div class="book">
-  <div class="shadow"></div>
-  <div class="body"></div>
-  <div class="cover">
+    <div class="d-flex flex-wrap">
+    <div style="width:10%;" *ngFor="let book of stored_books" class="m-5"    >
+      <div class="book-wrap" [matTooltip]="book.volumeInfo.title" >
+        <div class="book">
+          <div class="shadow"></div>
+          <div class="body"></div>
+          <div class="cover">
 
               <a [routerLink]="['/book/bob']" class="ajax-popup-link">
 
@@ -48,6 +52,7 @@
           </div>
 </div>
 </div>
+    </div>
     </div>
   </mat-card>
 </div>
