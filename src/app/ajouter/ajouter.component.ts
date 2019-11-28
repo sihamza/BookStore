@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GbooksService } from "../gbooks.service" ;
+import { Book } from '../Book';
+import { BookService } from '../Book.service';
 
 @Component({
   selector: 'app-ajouter',
@@ -8,12 +10,14 @@ import { GbooksService } from "../gbooks.service" ;
 })
 export class AjouterComponent implements OnInit {
 
+  Book: Book = new Book();
+
   api : boolean = true ;
   search : string = "harry" ;
   suggestions = [] ;
   //custom_book = { }
 
-  constructor(private books : GbooksService ) { }
+  constructor(private books : GbooksService,private BookService: BookService ) { }
 
   ngOnInit() {
     //this.suggestions = await this.books.getBooks(this.search) ;
@@ -21,6 +25,19 @@ export class AjouterComponent implements OnInit {
 
   async getSuggestions(search) {
      this.suggestions = await this.books.getBooks(search) ;
+  }
+
+  newBook(): void {
+    this.Book = new Book();
+  }
+ 
+  save() {
+    this.BookService.createBook(this.Book);
+    this.Book = new Book();
+  }
+ 
+  onSubmit() {
+    this.save();
   }
 
 
