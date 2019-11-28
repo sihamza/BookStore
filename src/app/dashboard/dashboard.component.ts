@@ -27,7 +27,7 @@ export class DashboardComponent implements OnInit {
   async ngOnInit() {
     this.stored_books = await this.books.getBooks('harry potter') ;
     this.loged = await this.authService.isloged() ;
-    // this.getBooksList();
+    this.getBooksList();
   }
 
   openDialog() {
