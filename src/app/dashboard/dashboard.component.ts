@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AjouterComponent } from '../ajouter/ajouter.component';
-import { GbooksService } from "../gbooks.service" ;
+//import { GbooksService } from "../gbooks.service" ;
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { BookService } from '../Book.service';
@@ -14,18 +14,16 @@ import { map } from 'rxjs/operators';
 })
 export class DashboardComponent implements OnInit {
 
-  Books: any;
-
   username : String = 'Chocofoxy' ;
   loged = true ;
   date : Date = new Date() ;
-  stored_books = [] ;
+  books = [] ;
   search ;
 
-  constructor(public dialog: MatDialog , private books : GbooksService , private authService: AuthService , private router: Router, private BookService: BookService  ) { }
+  constructor(public dialog: MatDialog , private authService: AuthService , private router: Router, private bookService: BookService  ) { }
 
   async ngOnInit() {
-    this.stored_books = await this.books.getBooks('harry potter') ;
+    //this.stored_books = await this.books.getBooks('harry potter') ;
     this.loged = await this.authService.isloged() ;
     this.getBooksList();
   }
@@ -37,9 +35,9 @@ export class DashboardComponent implements OnInit {
       await this.authService.logout();
       this.router.navigate(['login']);
     }
-    
-    getBooksList() {
-      this.BookService.getBooksList().snapshotChanges().pipe(
+
+  getBooksList() {
+     this.bookService.getBooksList().snapshotChanges().pipe(
         map(changes =>
           changes.map(c =>
             ({ key: c.payload.doc.id, ...c.payload.doc.data() })
@@ -47,9 +45,10 @@ export class DashboardComponent implements OnInit {
         )
       ).subscribe(Books => {
         this.Books = Books;
+        console.log(this.books) ;
       });
     }
-   
+
     deleteBooks() {
       this.BookService.deleteAll();
     }

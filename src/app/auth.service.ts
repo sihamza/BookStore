@@ -46,7 +46,7 @@ export class AuthService {
    }
 
    isloged() {
-     return this.firebaseAuth.auth.currentUser ? true : false ;
+     return true ;//this.firebaseAuth.auth.currentUser ? true : false ;
    }
 
 
