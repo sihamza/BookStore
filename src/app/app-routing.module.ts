@@ -5,6 +5,7 @@ import { LoginComponent } from './login/login.component' ;
 import { ErrorComponent } from './error/error.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AjouterComponent } from './ajouter/ajouter.component';
+import { BookComponent } from './book/book.component';
 import { AuthGuard } from './core/auth.guard';
 
 const appRoutes: Routes = [
@@ -12,6 +13,7 @@ const appRoutes: Routes = [
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] } ,
   { path: 'ajouter', component: ErrorComponent, canActivate: [AuthGuard] } ,
   { path: 'ajouter', component: AjouterComponent, canActivate: [AuthGuard] } ,
+  { path: 'books/:id', component: BookComponent, canActivate: [AuthGuard] } ,
   { path: '**', component: ErrorComponent }
 ];
 

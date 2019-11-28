@@ -14,7 +14,7 @@ app.use(cors());
 
 app.get('/api/', async (req,res)=> {
   var response = await getData('https://www.googleapis.com/books/v1/volumes?q=' + req.query.q ) ;
-  console.log(response);
+  //console.log(response);
   res.send(response) ;
 });
 app.get('/api/:id',  async (req,res)=> {

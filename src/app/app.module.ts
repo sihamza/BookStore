@@ -14,6 +14,7 @@ import { ErrorComponent } from './error/error.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AjouterComponent } from './ajouter/ajouter.component';
 import { AuthGuard } from './core/auth.guard';
+import { BookComponent } from './book/book.component';
 
 
 
@@ -25,7 +26,8 @@ import { AuthGuard } from './core/auth.guard';
   LoginComponent,
   ErrorComponent,
   DashboardComponent,
-  AjouterComponent],
+  AjouterComponent,
+  BookComponent],
   imports: [
     FormsModule ,
     BrowserModule,
