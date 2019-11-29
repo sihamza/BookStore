@@ -11,7 +11,6 @@ import { AuthGuard } from './core/auth.guard';
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent } ,
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] } ,
-  { path: 'ajouter', component: ErrorComponent, canActivate: [AuthGuard] } ,
   { path: 'book/:id', component: BookComponent, canActivate: [AuthGuard] } ,
   { path: 'ajouter', component: AjouterComponent, canActivate: [AuthGuard] } ,
   { path: '**', component: ErrorComponent }

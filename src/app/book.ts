@@ -1,13 +1,17 @@
 export class Book {
+  key:string;
   title:String;
   subtitle:String;
   authors:String[];
   publisher:String;
-  publishedDate:Date;
+  publishedDate:string;
   description:String;
-  id:String;
+  poster:string;
   pageCount:number;
-  categories:String;
+  categories:String[];
   averageRating:number;
   ratingsCount:number;
+  price:string;
+  amount:number;
+
 }

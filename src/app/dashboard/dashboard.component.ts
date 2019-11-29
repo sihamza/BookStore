@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AjouterComponent } from '../ajouter/ajouter.component';
-//import { GbooksService } from "../gbooks.service" ;
+//import { GBooksService } from "../gBooks.service" ;
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { BookService } from '../Book.service';
@@ -17,13 +17,13 @@ export class DashboardComponent implements OnInit {
   username : String = 'Chocofoxy' ;
   loged = true ;
   date : Date = new Date() ;
-  books = [] ;
+  Books:any[] ;
   search ;
 
-  constructor(public dialog: MatDialog , private authService: AuthService , private router: Router, private bookService: BookService  ) { }
+  constructor(public dialog: MatDialog , private authService: AuthService , private router: Router, private BookService: BookService  ) { }
 
   async ngOnInit() {
-    //this.books = await this.books.getBooks('harry potter') ;
+    //this.Books = await this.Books.getBooks('harry potter') ;
     this.loged = await this.authService.isloged() ;
     this.getBooksList();
   }
@@ -36,12 +36,20 @@ export class DashboardComponent implements OnInit {
       this.router.navigate(['login']);
     }
 
-   async getBooksList() {
-     //this.books = await this.bookService.getBooksList() ;
-   }
+    getBooksList() {
+      this.BookService.getBooksList().snapshotChanges().pipe(
+        map(changes =>
+          changes.map(c =>
+            ({ key: c.payload.doc.id, ...c.payload.doc.data() })
+          )
+        )
+      ).subscribe(Books => {
+        this.Books = Books;
+      });
+    }
 
     deleteBooks() {
-      this.bookService.deleteAll();
+      this.BookService.deleteAll();
     }
 
 

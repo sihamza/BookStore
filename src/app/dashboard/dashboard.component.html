@@ -35,8 +35,8 @@
     </div>
     <mat-divider class="p-3" [inset]="true" ></mat-divider>
     <div class="d-flex flex-wrap">
-    <div style="width:10%;" *ngFor="let book of books" class="m-5"    >
-      <div class="book-wrap" [matTooltip]="book.title" >
+   <div style="width:10%;" *ngFor="let Book of Books" class="m-5">
+      <div class="book-wrap" [matTooltip]="Book.title">
         <div class="book">
           <div class="shadow"></div>
           <div class="body"></div>
@@ -44,15 +44,14 @@
 
               <a [routerLink]="['/book/book.id']" class="ajax-popup-link">
 
-              <img [src]="book.poster" alt="book-cover">
+              <img [src]="Book.poster" alt="book-cover">
             <span class="border"></span>
-
     </a>
     <div class="edge"><div class="edge-border"></div></div>
 
           </div>
 </div>
-</div>
+</div> 
     </div>
     </div>
   </mat-card>
