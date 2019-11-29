@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute  } from '@angular/router';
+import { BookService } from '../Book.service';
 
 @Component({
   selector: 'app-book',
@@ -9,9 +10,16 @@ import { Router } from '@angular/router';
 })
 export class BookComponent implements OnInit {
 
-  constructor(private authService: AuthService , private router: Router) { }
+  book ;
 
-  ngOnInit() {
+  constructor(private authService: AuthService , private router: ActivatedRoute  , private bookService: BookService ) { }
+
+  async ngOnInit() {
+    //this.book =  await this.bookService.getBook(this.router.snapshot.params.id) ;
+  }
+
+  async deleteBook() {
+    await this.bookService.deleteBook(this.router.snapshot.params.id) ;
   }
 
 }

@@ -23,19 +23,19 @@ export class AjouterComponent implements OnInit {
     //this.suggestions = await this.books.getBooks(this.search) ;
   }
 
-  async getSuggestions(search) {
-     this.suggestions = await this.books.getBooks(search) ;
+  async getSuggestions(search,author) {
+     this.suggestions = await this.books.getBooks(search,author) ;
   }
 
   newBook(): void {
     this.Book = new Book();
   }
- 
+
   save() {
     this.BookService.createBook(this.Book);
     this.Book = new Book();
   }
- 
+
   onSubmit() {
     this.save();
   }

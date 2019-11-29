@@ -25,19 +25,33 @@
 	</div>
 	<div class="form-container sign-in-container">
 		<form action="#">
-			<h1>Sign in</h1>
-			<span>or use your account</span>
+			<h5>Google Book</h5>
 			<mat-form-field class="full-w" >
-	 		<input matInput placeholder="State" (keyup)="getSuggestions(search.value)" #search aria-label="State" [matAutocomplete]="auto" >
-			<mat-autocomplete #auto>
+	 		<input matInput placeholder="Title :" (keyup)="getSuggestions(search.value,author.value)" #search aria-label="title" >
+			</mat-form-field>
+			<mat-form-field class="full-w" >
+			<input matInput placeholder="Author :" (keyup)="getSuggestions(search.value,author.value)" #author aria-label="title" >
+			</mat-form-field>
+			<mat-divider class="my-2"></mat-divider>
+			<mat-form-field class="full-w" >
+	  <mat-label> Select a book </mat-label>
+	  <mat-select>
   			<mat-option *ngFor="let book of suggestions" [value]="book['volumeInfo']['title']">
     			{{ book['volumeInfo']['title'] }}
   			</mat-option>
-			</mat-autocomplete>
+			</mat-select>
 			</mat-form-field>
-			<input type="password" placeholder="Password" />
-			<a href="#">Forgot your password?</a>
-      <button mat-button mat-raised-button (click)="api = !api" class="m-2" color="primary"> <mat-icon> add_box </mat-icon> Sign Up </button>
+			<div>
+				<mat-form-field class="full-w" >
+				<mat-icon matPrefix class="mx-3" style="font-size : 18px " color="primary" > attach_money </mat-icon>
+				<input matInput type="number" placeholder="Price :"  #price aria-label="title" >
+				</mat-form-field>
+				<mat-form-field class="full-w" >
+				<mat-icon matPrefix class="mx-3" style="font-size : 18px " color="primary"> shopping_cart </mat-icon>
+				<input matInput type="number" placeholder="Quantity :"  #price aria-label="title" >
+				</mat-form-field>
+				</div>
+      <button mat-button mat-raised-button (click)="api = !api" class="m-2" color="primary"> <mat-icon> post_add </mat-icon> Add </button>
 		</form>
 	</div>
 	<div class="overlay-container">

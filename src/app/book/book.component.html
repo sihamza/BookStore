@@ -1,1 +1,11 @@
-<p>book works!</p>
+<div class="full-w p-3">
+  <mat-card class="mat-elevation-z2 full-w p-4 blueB d-flex justify-content-between ">
+        <button  mat-raised-button  [routerLink]="['/dashboard']" color="primary"><mat-icon> home </mat-icon> Home </button>
+        <div>
+        <button  mat-raised-button  class="ml-2" (click)="deleteBook()" color="warn"><mat-icon> remove_circle </mat-icon> Delete </button>
+        <button  mat-raised-button  class="ml-2" (click)="openDialog()" color="accent"> <mat-icon> settings_applications </mat-icon> Modify </button>
+        </div>
+    </mat-card>
+    <mat-card class="mat-elevation-z2 full-w p-4 mt-3  blueB full-h">
+    </mat-card>
+    </div>

@@ -10,7 +10,4 @@ export class Book {
   categories:String;
   averageRating:number;
   ratingsCount:number;
-
-   
-  
 }

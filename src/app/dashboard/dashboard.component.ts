@@ -23,7 +23,7 @@ export class DashboardComponent implements OnInit {
   constructor(public dialog: MatDialog , private authService: AuthService , private router: Router, private bookService: BookService  ) { }
 
   async ngOnInit() {
-    //this.stored_books = await this.books.getBooks('harry potter') ;
+    //this.books = await this.books.getBooks('harry potter') ;
     this.loged = await this.authService.isloged() ;
     this.getBooksList();
   }
@@ -36,21 +36,12 @@ export class DashboardComponent implements OnInit {
       this.router.navigate(['login']);
     }
 
-  getBooksList() {
-     this.bookService.getBooksList().snapshotChanges().pipe(
-        map(changes =>
-          changes.map(c =>
-            ({ key: c.payload.doc.id, ...c.payload.doc.data() })
-          )
-        )
-      ).subscribe(Books => {
-        this.Books = Books;
-        console.log(this.books) ;
-      });
-    }
+   async getBooksList() {
+     //this.books = await this.bookService.getBooksList() ;
+   }
 
     deleteBooks() {
-      this.BookService.deleteAll();
+      this.bookService.deleteAll();
     }
 
 
