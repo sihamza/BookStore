@@ -1,0 +1,78 @@
+<h3>Create Book</h3>
+<div [hidden]="submitted" style="width: 300px;" class="mx-3">
+    <form (ngSubmit)="onSubmit()">
+             
+			  <div class="form-group">
+				<label for="name">title</label>
+				<input type="text" class="form-control" id="title" required [(ngModel)]="Book.title" name="title">
+			  </div>
+		   
+			  <div class="form-group">
+				<label for="age">Subtitle</label>
+				<input type="text" class="form-control" id="subtitle" required [(ngModel)]="Book.subtitle" name="subtitle">
+			  </div>
+
+			  <div class="form-group">
+					<label for="age">Authors</label>
+					<input type="text" class="form-control" id="authors" required [(ngModel)]="Book.authors" name="authors">
+				  </div>
+
+				<div class="form-group">
+					<label for="age">Publisher</label>
+					<input type="text" class="form-control" id="publisher" required [(ngModel)]="Book.publisher" name="publisher">
+				  </div>
+
+				  <div class="form-group">
+						<label for="age">PublishedDate</label>
+						<input type="text" class="form-control" id="publishedDate" required [(ngModel)]="Book.publishedDate" name="publishedDate">
+					  </div>
+					  
+					  <div class="form-group">
+							<label for="age">Description</label>
+							<input type="text" class="form-control" id="age" required [(ngModel)]="Book.description" name="description">
+						  </div>	 
+						  
+
+							  <div class="form-group">
+									<label for="age">Poster</label>
+									<input type="text" class="form-control" id="poster" required [(ngModel)]="Book.poster" name="poster">
+								  </div>	 
+
+								  <div class="form-group">
+										<label for="age">PageCount</label>
+										<input type="number" class="form-control" id="pageCount" required [(ngModel)]="Book.pageCount" name="pageCount">
+									  </div>
+									  
+									  <div class="form-group">
+											<label for="age">categories</label>
+											<input type="text" class="form-control" id="categories" required [(ngModel)]="Book.categories" name="categories">
+										  </div>
+
+										  <div class="form-group">
+												<label for="age">averageRating</label>
+												<input type="number" class="form-control" id="averageRating" required [(ngModel)]="Book.averageRating" name="averageRating">
+											  </div>
+
+											  <div class="form-group">
+													<label for="age">ratingsCount</label>
+													<input type="number" class="form-control" id="ratingsCount" required [(ngModel)]="Book.ratingsCount" name="ratingsCount">
+												  </div>
+
+												  <div class="form-group">
+														<label for="age">price</label>
+														<input type="text" class="form-control" id="price" required [(ngModel)]="Book.price" name="price">
+													  </div>
+
+													  <div class="form-group">
+															<label for="age">amount</label>
+															<input type="number" class="form-control" id="amount" required [(ngModel)]="Book.amount" name="amount">
+														  </div>
+		   
+			  <button type="submit" class="btn btn-success">Submit</button> 
+			</form>
+</div>
+ 
+<div [hidden]="!submitted">
+  <h4>You submitted successfully!</h4>
+  <button class="btn btn-success" (click)="newBook()">Add</button>
+</div>
