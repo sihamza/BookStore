@@ -7,5 +7,9 @@
         </div>
     </mat-card>
     <mat-card class="mat-elevation-z2 full-w p-4 mt-3  blueB full-h">
+      <img mat-card-image [src]="book.poster" [alt]="book.title">
+      <mat-card-title> {{ book.title }} </mat-card-title>
+      <mat-card-subtitle> {{ book.subtitle }}</mat-card-subtitle>
+
     </mat-card>
     </div>

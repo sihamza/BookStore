@@ -17,6 +17,7 @@ import { AjouterComponent } from './ajouter/ajouter.component';
 import { AuthGuard } from './core/auth.guard';
 import { BookComponent } from './book/book.component';
 import { TestaddComponent } from './testadd/testadd.component';
+import { ModifyComponent } from './modify/modify.component';
 
 
 
@@ -30,7 +31,8 @@ import { TestaddComponent } from './testadd/testadd.component';
   DashboardComponent,
   AjouterComponent,
   BookComponent,
-  TestaddComponent],
+  TestaddComponent,
+  ModifyComponent],
   imports: [
     FormsModule ,
     BrowserModule,

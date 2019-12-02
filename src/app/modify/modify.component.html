@@ -1,0 +1,38 @@
+<div class="container"  id="container">
+	<div class="form-container sign-up-container">
+		<form #f="ngForm" >
+			<h5>Custom Book</h5>
+			<mat-form-field class="full-w" >
+	 		<input matInput placeholder="Title :"  name="title" ngModel aria-label="title" >
+			</mat-form-field>
+			<mat-form-field class="full-w" >
+	 		<input matInput placeholder="Subtitle :" name="subtitle" ngModel aria-label="title" >
+			</mat-form-field>
+			<mat-form-field class="full-w" >
+	 		<input matInput placeholder="Poster URL :" name="poster" ngModel aria-label="title" >
+			</mat-form-field>
+			<mat-form-field class="full-w"  >
+    			<textarea matInput name="description" placeholder="Description :"></textarea>
+  		</mat-form-field>
+			<mat-form-field class="full-w">
+  			<input matInput name="date" [matDatepicker]="picker" placeholder="Publishing date : ">
+			  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  			<mat-datepicker touchUi #picker></mat-datepicker>
+			</mat-form-field>
+			<mat-form-field class="full-w" >
+	 		<input matInput name="publisher" placeholder="Publisher :"  ngModel aria-label="title" >
+			</mat-form-field>
+			<div>
+				<mat-form-field class="full-w" >
+				<mat-icon matPrefix class="mx-3" style="font-size : 18px " color="primary" > attach_money </mat-icon>
+				<input matInput type="number" placeholder="Price :"  #price aria-label="title" >
+				</mat-form-field>
+				<mat-form-field class="full-w" >
+				<mat-icon matPrefix class="mx-3" style="font-size : 18px " color="primary"> shopping_cart </mat-icon>
+				<input matInput type="number" placeholder="Quantity :"  #price aria-label="title" >
+				</mat-form-field>
+				</div>
+			<button mat-button mat-raised-button (click)="addBook(f)" class="m-2" color="primary"> <mat-icon> post_add </mat-icon> Add </button>
+		</form>
+	</div>
+</div>
