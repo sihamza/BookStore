@@ -29,7 +29,7 @@ export class DashboardComponent implements OnInit {
   }
 
   openDialog() {
-    this.dialog.open(AjouterComponent, { panelClass: 'custom-dialog-container' }); }
+    this.dialog.open(AjouterComponent, { panelClass: 'custom-dialog-container' , height: '90%' }); }
 
   async logout() {
       await this.authService.logout();
@@ -45,6 +45,8 @@ export class DashboardComponent implements OnInit {
         )
       ).subscribe(Books => {
         this.Books = Books;
+        console.log(this.Books);
+
       });
     }
 

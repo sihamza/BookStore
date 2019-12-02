@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute  } from '@angular/router';
 import { BookService } from '../Book.service';
+import { Router } from '@angular/router';
+import { ModifyComponent } from '../modify/modify.component';
 
 @Component({
   selector: 'app-book',
@@ -12,14 +15,20 @@ export class BookComponent implements OnInit {
 
   book ;
 
-  constructor(private authService: AuthService , private router: ActivatedRoute  , private bookService: BookService ) { }
+  constructor(public dialog: MatDialog , private authService: AuthService , private router : Router , private active_router: ActivatedRoute  , private bookService: BookService ) { }
 
   async ngOnInit() {
-    //this.book =  await this.bookService.getBook(this.router.snapshot.params.id) ;
+    /*this.book =  await this.bookService.getBook(this.active_router.snapshot.params.id) ;
+    if ( this.book == null ) {
+      this.router.navigate(['dashboard']);
+    }*/
   }
 
+  openDialog() {
+    this.dialog.open(ModifyComponent, { panelClass: 'custom-dialog-container' , height: '90%' }); }
+
   async deleteBook() {
-    await this.bookService.deleteBook(this.router.snapshot.params.id) ;
+    await this.bookService.deleteBook(this.active_router.snapshot.params.id) ;
   }
 
 }
