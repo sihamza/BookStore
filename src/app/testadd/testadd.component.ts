@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Book } from '../Book';
 import { BookService } from '../Book.service';
 
+
 @Component({
   selector: 'app-testadd',
   templateUrl: './testadd.component.html',
@@ -22,7 +23,6 @@ export class TestaddComponent implements OnInit {
 getBookbykey(key: string){
     this.BookService.getBook(key).subscribe( book => {
       console.log(book);
-      
     });
  }
  
