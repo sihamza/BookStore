@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Book } from './Book';
-import { map } from 'rxjs/operators';
+import { map,take } from 'rxjs/operators';
  
 @Injectable({
   providedIn: 'root'
@@ -16,14 +16,38 @@ export class BookService {
     this.BooksRef = db.collection(this.dbPath);
   }
 
+  existesBook(title: string){
+    this.db.collection(this.dbPath , ref => ref.where('title', '==', title))
+    .snapshotChanges().pipe(
+     map(changes =>
+       changes.map(c =>
+       { return { key: c.payload.doc.id,  book : c.payload.doc.data() };
+       })
+     )
+   )
+   .subscribe(Books => {
+     console.log(Books);
+     if(Books.length == 0){ return false; }
+     else{ return true; }
+    });
+  }
+
+ getBook(key: string){
+    
+ return this.db.collection("Books").doc(key).valueChanges()
+
+  }
+
+  
+
   createBookFromApi(gbook:any , qty:number , price:string){
     
     this.db.collection(this.dbPath , ref => ref.where('title', '==', gbook.volumeInfo.title))
     .snapshotChanges().pipe(
      map(changes =>
        changes.map(c =>
-         ({ key: c.payload.doc.id,  book : c.payload.doc.data() })
-       )
+       { return { key: c.payload.doc.id,  book : c.payload.doc.data() };
+       })
      )
    )
    .subscribe(Books => {
@@ -31,38 +55,33 @@ export class BookService {
      if(Books.length == 0){
        var  book = new Book() ;
      book.title=gbook.volumeInfo.title;
-     book.subtitle=gbook.volumeInfo.subtitle;
-     book.authors=gbook.volumeInfo.authors;
-     book.publisher=gbook.volumeInfo.publisher;
-     book.publishedDate=gbook.volumeInfo.publishedDate;
-     book.poster= "ok"; //gbook.volumeInfo.imageLinks.thumbnail;
-     book.pageCount=gbook.volumeInfo.pageCount;
-     book.averageRating=gbook.volumeInfo.averageRating;
+     if(gbook.volumeInfo.subtitle == null){book.subtitle="none";}else{book.subtitle=gbook.volumeInfo.subtitle;}
+     if(gbook.volumeInfo.authors == null){}else{book.authors=gbook.volumeInfo.authors;}
+     if(gbook.volumeInfo.publisher == null){book.publisher="none";}else{book.publisher=gbook.volumeInfo.publisher;}
+     if(gbook.volumeInfo.publishedDate == null){book.publishedDate="none";}else{book.publishedDate=gbook.volumeInfo.publishedDate;}
+     if(gbook.volumeInfo.imageLinks.thumbnail == null){book.poster="none";}else{book.poster=gbook.volumeInfo.imageLinks.thumbnail;}
+     if(gbook.volumeInfo.pageCount == null){book.pageCount=0;}else{book.pageCount=gbook.volumeInfo.pageCount;}
+     if(gbook.volumeInfo.averageRating == null){book.pageCount=0;}else{book.averageRating=gbook.volumeInfo.averageRating;}
      book.price=price;
      book.amount=qty;
      console.log(book);
      this.createBook(book);
+     
      }
-     else{
-       var x:any ;
-       x = Books[0].book ;
-       x.amount += qty ;
-       this.updateBook(Books[0].key ,  x ) ;  
-       
-     }
+     
  
      
-   })
+   });
      
  }
-  
- 
+
+
   createBook(Book: Book): void {
     this.BooksRef.add({...Book});
   }
  
-  async updateBook(key: string, value: any): Promise<void> {
-    await this.BooksRef.doc(key).update(value);
+   updateBook(key: string, value: Book): Promise<void> {
+     this.BooksRef.doc(key).update(value);
   }
  
   deleteBook(key: string): Promise<void> {
