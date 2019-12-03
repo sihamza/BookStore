@@ -17,18 +17,20 @@ export class BookComponent implements OnInit {
 
   constructor(public dialog: MatDialog , private authService: AuthService , private router : Router , private active_router: ActivatedRoute  , private bookService: BookService ) { }
 
-  async ngOnInit() {
-    /*this.book =  await this.bookService.getBook(this.active_router.snapshot.params.id) ;
-    if ( this.book == null ) {
+    async ngOnInit() {
+    this.book = await this.bookService.getBook(this.active_router.snapshot.params.key) ;
+    console.log(this.book);
+    if ( !this.book ) {
       this.router.navigate(['dashboard']);
-    }*/
+    }
   }
 
   openDialog() {
     this.dialog.open(ModifyComponent, { panelClass: 'custom-dialog-container' , height: '90%' }); }
 
   async deleteBook() {
-    await this.bookService.deleteBook(this.active_router.snapshot.params.id) ;
+    await this.bookService.deleteBook(this.active_router.snapshot.params.key) ;
+    this.router.navigate(['dashboard']);
   }
 
 }

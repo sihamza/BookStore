@@ -6,10 +6,32 @@
         <button  mat-raised-button  class="ml-2" (click)="openDialog()" color="accent"> <mat-icon> settings_applications </mat-icon> Modify </button>
         </div>
     </mat-card>
-    <mat-card class="mat-elevation-z2 full-w p-4 mt-3  blueB full-h">
-      <img mat-card-image [src]="book.poster" [alt]="book.title">
-      <mat-card-title> {{ book.title }} </mat-card-title>
-      <mat-card-subtitle> {{ book.subtitle }}</mat-card-subtitle>
+    <mat-card  *ngIf="book" class="mat-elevation-z2 full-w p-4 mt-3  blueB full-h d-flex">
+     <img mat-card-image [src]="book.poster" class="m-5" [alt]="book.title">
 
+     <div class="m-5">
+      <mat-card-title class="text-center" > {{ book.title }} </mat-card-title>
+      <mat-card-subtitle class="text-center" > {{ book.subtitle }}</mat-card-subtitle>
+      <mat-divider [inset]="true" class="my-4" ></mat-divider>
+      <mat-card-content class="p-2" >
+        <mat-list>
+          <mat-list-item  class="text-muted">
+           <p> {{ book.description.substring(0,400) }} <span *ngIf="book.description.length > 400"> ... </span> </p>
+          </mat-list-item>
+         <mat-list-item > Published by {{ book.publisher }} on {{ book.publishedDate | date }} </mat-list-item>
+         <mat-list-item >
+          Written by <span class="mx-1"  *ngFor="let author of book.authors; let i = index"> {{ author }} <span *ngIf="book.authors.length -1 != i"> , </span>
+         </span>
+         & have {{ book.pageCount }} page .
+          </mat-list-item>
+        </mat-list>
+        <mat-list class="d-flex flex-row-reverse">
+          <mat-chip-list aria-label="Fish selection">
+            <mat-chip color="primary" selected> <mat-icon Suffix > shopping_cart </mat-icon> {{ book.amount }}</mat-chip>
+            <mat-chip color="accent" selected> <mat-icon Suffix > attach_money </mat-icon> {{ book.price }}</mat-chip>
+          </mat-chip-list>
+        </mat-list>
+      </mat-card-content>
+    </div>
     </mat-card>
     </div>

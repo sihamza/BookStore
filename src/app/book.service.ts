@@ -2,16 +2,16 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Book } from './Book';
 import { map,take } from 'rxjs/operators';
- 
+
 @Injectable({
   providedIn: 'root'
 })
 export class BookService {
- 
+
   private dbPath = '/Books';
- 
+
   BooksRef: AngularFirestoreCollection<Book> = null;
- 
+
   constructor(private db: AngularFirestore) {
     this.BooksRef = db.collection(this.dbPath);
   }
@@ -33,15 +33,17 @@ export class BookService {
   }
 
  getBook(key: string){
-    
- return this.db.collection("Books").doc(key).valueChanges()
+
+ return this.db.collection("Books").doc(key).ref.get().then( doc => {
+    return doc.data() ;
+ });
 
   }
 
-  
+
 
   createBookFromApi(gbook:any , qty:number , price:string){
-    
+
     this.db.collection(this.dbPath , ref => ref.where('title', '==', gbook.volumeInfo.title))
     .snapshotChanges().pipe(
      map(changes =>
@@ -58,6 +60,7 @@ export class BookService {
      if(gbook.volumeInfo.subtitle == null){book.subtitle="none";}else{book.subtitle=gbook.volumeInfo.subtitle;}
      if(gbook.volumeInfo.authors == null){}else{book.authors=gbook.volumeInfo.authors;}
      if(gbook.volumeInfo.publisher == null){book.publisher="none";}else{book.publisher=gbook.volumeInfo.publisher;}
+     if(gbook.volumeInfo.description == null){book.description="none";}else{book.description=gbook.volumeInfo.description;}
      if(gbook.volumeInfo.publishedDate == null){book.publishedDate="none";}else{book.publishedDate=gbook.volumeInfo.publishedDate;}
      if(gbook.volumeInfo.imageLinks.thumbnail == null){book.poster="none";}else{book.poster=gbook.volumeInfo.imageLinks.thumbnail;}
      if(gbook.volumeInfo.pageCount == null){book.pageCount=0;}else{book.pageCount=gbook.volumeInfo.pageCount;}
@@ -66,32 +69,32 @@ export class BookService {
      book.amount=qty;
      console.log(book);
      this.createBook(book);
-     
+
      }
-     
- 
-     
+
+
+
    });
-     
+
  }
 
 
   createBook(Book: Book): void {
     this.BooksRef.add({...Book});
   }
- 
+
    updateBook(key: string, value: Book): Promise<void> {
      this.BooksRef.doc(key).update(value);
   }
- 
+
   deleteBook(key: string): Promise<void> {
     return this.BooksRef.doc(key).delete();
   }
- 
+
   getBooksList(): AngularFirestoreCollection<Book> {
     return this.BooksRef;
   }
- 
+
   deleteAll() {
     this.BooksRef.get().subscribe(
       querySnapshot => {
