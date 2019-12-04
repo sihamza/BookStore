@@ -83,11 +83,8 @@ export class BookService {
     this.BooksRef.add({...Book});
   }
 
-<<<<<<< HEAD
-   updateBook(key: string, value: Book): void {
-=======
+
    updateBook(key: string, value: Book) {
->>>>>>> de2db63f7110cae0f80d0ca3fb7b8d1f5234b947
      this.BooksRef.doc(key).update(value);
   }
 
