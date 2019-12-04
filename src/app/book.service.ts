@@ -83,11 +83,11 @@ export class BookService {
     this.BooksRef.add({...Book});
   }
 
-   updateBook(key: string, value: Book): Promise<void> {
+   updateBook(key: string, value: Book): void {
      this.BooksRef.doc(key).update(value);
   }
 
-  deleteBook(key: string): Promise<void> {
+  deleteBook(key: string) {
     return this.BooksRef.doc(key).delete();
   }
 
