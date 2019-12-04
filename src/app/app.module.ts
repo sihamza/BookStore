@@ -20,6 +20,7 @@ import { TestaddComponent } from './testadd/testadd.component';
 import { ModifyComponent } from './modify/modify.component';
 import { ChartsModule } from 'ng2-charts';
 import { ChartComponent } from './chart/chart.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -45,7 +46,8 @@ import { ChartComponent } from './chart/chart.component';
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    ChartsModule
+    ChartsModule,
+    ReactiveFormsModule
   ],
   providers: [AuthService,AuthGuard,{ provide: FirestoreSettingsToken, useValue: {} }],
   bootstrap: [AppComponent]

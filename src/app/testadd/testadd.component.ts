@@ -20,11 +20,11 @@ export class TestaddComponent implements OnInit {
   ngOnInit() {
   }
 
-getBookbykey(key: string){
+/*getBookbykey(key: string){
     this.BookService.getBook(key).subscribe( book => {
       console.log(book);
     });
- }
+ }*/
  
   newBook(): void {
     this.submitted = false;
