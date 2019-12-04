@@ -18,6 +18,9 @@ import { AuthGuard } from './core/auth.guard';
 import { BookComponent } from './book/book.component';
 import { TestaddComponent } from './testadd/testadd.component';
 import { ModifyComponent } from './modify/modify.component';
+import { ChartsModule } from 'ng2-charts';
+import { ChartComponent } from './chart/chart.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -32,7 +35,8 @@ import { ModifyComponent } from './modify/modify.component';
   AjouterComponent,
   BookComponent,
   TestaddComponent,
-  ModifyComponent],
+  ModifyComponent,
+  ChartComponent],
   imports: [
     FormsModule ,
     BrowserModule,
@@ -41,7 +45,9 @@ import { ModifyComponent } from './modify/modify.component';
     MaterialModule,
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    ChartsModule,
+    ReactiveFormsModule
   ],
   providers: [AuthService,AuthGuard,{ provide: FirestoreSettingsToken, useValue: {} }],
   bootstrap: [AppComponent]

@@ -1,49 +1,52 @@
 <div class="container" [ngClass]="{'right-panel-active': api }" id="container">
 	<div class="form-container sign-up-container">
-		<form #f="ngForm" >
+		<form form [formGroup]="BookForm" (ngSubmit)="onSubmit()">
 			<h5>Custom Book</h5>
 			<mat-form-field class="full-w" >
-	 		<input matInput placeholder="Title :"  name="title" ngModel aria-label="title" >
+	 		<input matInput type="text" placeholder="Title :" class="form-control" id="title" required  name="title" formControlName="title" >
 			</mat-form-field>
 			<mat-form-field class="full-w" >
-	 		<input matInput placeholder="Subtitle :" name="subtitle" ngModel aria-label="title" >
+	 		<input matInput type="text" placeholder="Subtitle :" class="form-control" id="subtitle" required  name="subtitle" formControlName="subtitle">
 			</mat-form-field>
 			<mat-form-field class="full-w" >
-	 		<input matInput placeholder="Poster URL :" name="poster" ngModel aria-label="title" >
+	 		<input matInput type="text" placeholder="Poster URL :" class="form-control" id="poster" required  name="poster" formControlName="poster">
 			</mat-form-field>
 			<mat-form-field class="full-w"  >
-    			<textarea matInput name="description" placeholder="Description :"></textarea>
+    			<textarea matInput type="text"  placeholder="Description :" class="form-control" id="description" required  name="description" formControlName="description"></textarea>
   		</mat-form-field>
 			<mat-form-field class="full-w">
-  			<input matInput name="date" [matDatepicker]="picker" placeholder="Publishing date : ">
+  			<input matInput type="text" [matDatepicker]="picker" placeholder="Publishing date : " class="form-control" id="publishedDate" required  name="publishedDate" formControlName="publishedDate">
 			  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
   			<mat-datepicker touchUi #picker></mat-datepicker>
 			</mat-form-field>
 			<mat-form-field class="full-w" >
-	 		<input matInput name="publisher" placeholder="Publisher :"  ngModel aria-label="title" >
+	 		<input matInput type="text" placeholder="Publisher :" class="form-control" id="publisher" required  name="publisher" formControlName="publisher">
 			</mat-form-field>
 
-			<div>
-				<mat-form-field class="full-w" >
+			<div class="list-group list-group-horizontal">
+				<mat-form-field class="full-w" style="width: 152px;" >
 				<mat-icon matPrefix class="mx-3" style="font-size : 18px " color="primary" > attach_money </mat-icon>
-				<input matInput type="number" placeholder="Price :"  #price aria-label="title" >
+				<input matInput  type="number" placeholder="Price :" class="form-control" id="price" required  name="price" formControlName="price">
 				</mat-form-field>
-				<mat-form-field class="full-w" >
+				<mat-form-field class="full-w" style="width: 152px;" >
 				<mat-icon matPrefix class="mx-3" style="font-size : 18px " color="primary"> shopping_cart </mat-icon>
-				<input matInput type="number" placeholder="Quantity :"  #price aria-label="title" >
+				<input matInput type="number" placeholder="Quantity :" class="form-control" id="amount" required  name="amount" formControlName="amount">
 				</mat-form-field>
 				</div>
-			<button mat-button mat-raised-button (click)="addBook(f)" class="m-2" color="primary"> <mat-icon> post_add </mat-icon> Add </button>
+				<div class="list-group list-group-horizontal">
+			<button mat-button mat-raised-button type="submit" class="m-2" color="primary"> <mat-icon> post_add </mat-icon> Add </button>
+			<button mat-button mat-raised-button type="reset" (click)="onReset()" class="m-2 btn btn-secondary" > Reset </button>
+			</div>
 		</form>
 	</div>
 	<div class="form-container sign-in-container">
 		<form (ngSubmit)="addGoogleBook(f2)"  #f2="ngForm" >
 			<h5>Google Book</h5>
 			<mat-form-field class="full-w" >
-	 		<input matInput placeholder="Title :" (keyup)="getSuggestions(search.value,author.value)" #search aria-label="title" >
+	 		<input matInput placeholder="Title :" (keyup)="getSuggestions(search.value,author.value)" #search  >
 			</mat-form-field>
 			<mat-form-field class="full-w" >
-			<input matInput placeholder="Author :" (keyup)="getSuggestions(search.value,author.value)" #author aria-label="title" >
+			<input matInput placeholder="Author :" (keyup)="getSuggestions(search.value,author.value)" #author  >
 			</mat-form-field>
 			<mat-divider class="my-2"></mat-divider>
 			<mat-form-field class="full-w" >
@@ -57,11 +60,11 @@
 			<div>
 				<mat-form-field class="full-w" >
 				<mat-icon matPrefix class="mx-3" style="font-size : 18px " color="primary" > attach_money </mat-icon>
-				<input matInput type="number" placeholder="Price :"  name="price" ngModel aria-label="title" required >
+				<input matInput type="number" placeholder="Price :"  name="price" ngModel  required >
 				</mat-form-field>
 				<mat-form-field class="full-w" >
 				<mat-icon matPrefix class="mx-3" style="font-size : 18px " color="primary"> shopping_cart </mat-icon>
-				<input matInput type="number" placeholder="Quantity :"  name="qty" ngModel aria-label="title" required>
+				<input matInput type="number" placeholder="Quantity :"  name="qty" ngModel  required>
 				</mat-form-field>
 				</div>
       <button mat-button mat-raised-button class="m-2" [disabled]="f2.invalid" color="primary"> <mat-icon> post_add </mat-icon> Add </button>

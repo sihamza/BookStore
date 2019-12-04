@@ -32,7 +32,7 @@ export class BookService {
     });
   }
 
- getBook(key: string){
+ getBook(key: string) {
 
  return this.db.collection("Books").doc(key).ref.get().then( doc => {
     return doc.data() ;
@@ -62,7 +62,7 @@ export class BookService {
      if(gbook.volumeInfo.publisher == null){book.publisher="none";}else{book.publisher=gbook.volumeInfo.publisher;}
      if(gbook.volumeInfo.description == null){book.description="none";}else{book.description=gbook.volumeInfo.description;}
      if(gbook.volumeInfo.publishedDate == null){book.publishedDate="none";}else{book.publishedDate=gbook.volumeInfo.publishedDate;}
-     if(gbook.volumeInfo.imageLinks.thumbnail == null){book.poster="none";}else{book.poster=gbook.volumeInfo.imageLinks.thumbnail;}
+     if(gbook.volumeInfo.imageLinks.thumbnail == null){book.poster="https://www.forewordreviews.com/books/covers/mountains-of-the-world.jpg";}else{book.poster=gbook.volumeInfo.imageLinks.thumbnail;}
      if(gbook.volumeInfo.pageCount == null){book.pageCount=0;}else{book.pageCount=gbook.volumeInfo.pageCount;}
      if(gbook.volumeInfo.averageRating == null){book.pageCount=0;}else{book.averageRating=gbook.volumeInfo.averageRating;}
      book.price=price;
@@ -83,7 +83,11 @@ export class BookService {
     this.BooksRef.add({...Book});
   }
 
+<<<<<<< HEAD
    updateBook(key: string, value: Book): void {
+=======
+   updateBook(key: string, value: Book) {
+>>>>>>> de2db63f7110cae0f80d0ca3fb7b8d1f5234b947
      this.BooksRef.doc(key).update(value);
   }
 
