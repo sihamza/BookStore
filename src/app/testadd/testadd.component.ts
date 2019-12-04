@@ -34,7 +34,7 @@ getBookbykey(key: string){
       console.log(book);
     });
  }*/
- 
+
 >>>>>>> de2db63f7110cae0f80d0ca3fb7b8d1f5234b947
   newBook(): void {
     this.submitted = false;
