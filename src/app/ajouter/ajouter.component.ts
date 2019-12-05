@@ -64,14 +64,14 @@ export class AjouterComponent implements OnInit {
     this.Book.publisher = this.BookForm.value['publisher'];
     this.Book.price = this.BookForm.value['price'];
     this.Book.amount = this.BookForm.value['amount'];
-<<<<<<< HEAD
+
 
     this.BookService.InsertBook(this.Book);
     
-=======
+
     this.BookService.createBook(this.Book);
     this.Book = new Book();
->>>>>>> a184588ed863b5e73f7b7716625f1f26dca9a8bf
+
   }
 
   onSubmit() {
