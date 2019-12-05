@@ -47,7 +47,7 @@ export class AjouterComponent implements OnInit {
 
 
   addGoogleBook(f2) {
-    this.BookService.createBookFromApi(f2.value['gbook'],f2.value['qty'],f2.value['price']) ;
+   this.BookService.createBookFromApi(f2.value['gbook'],f2.value['qty'],f2.value['price']) ;
   }
 
   newBook(): void {

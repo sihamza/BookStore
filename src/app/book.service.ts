@@ -10,14 +10,19 @@ export class BookService {
 
   private dbPath = '/Books';
 
-  BooksRef: AngularFirestoreCollection<Book> = null;
+  BooksRef: AngularFirestoreCollection<Book>;
+
+  existed:boolean;
 
   constructor(private db: AngularFirestore) {
     this.BooksRef = db.collection(this.dbPath);
   }
 
-  existesBook(title: string){
-    this.db.collection(this.dbPath , ref => ref.where('title', '==', title))
+  
+  
+
+   existesBook(gbook:any){
+    this.db.collection(this.dbPath , ref => ref.where('title', '==', gbook.volumeInfo.title))
     .snapshotChanges().pipe(
      map(changes =>
        changes.map(c =>
@@ -26,18 +31,21 @@ export class BookService {
      )
    )
    .subscribe(Books => {
-     console.log(Books);
-     if(Books.length == 0){ return false; }
-     else{ return true; }
+     if(Books.length == 0){ console.log("not exist");}
+     else{ console.log(" exist");  var x = Books[0].amount++; updateAmount(Book[0].key,x); }
     });
   }
 
  getBook(key: string) {
-
  return this.db.collection("Books").doc(key).ref.get().then( doc => {
     return doc.data() ;
  });
 
+  }
+
+  updateAmount(id: string,x: number) {
+    console.log('User `${id}` amount updated')
+    this.BooksRef.doc(`${id}`).update({ amount: x });
   }
 
 
@@ -71,8 +79,7 @@ export class BookService {
      this.createBook(book);
 
      }
-
-
+     else{ console.log(" exist");  var x= Number(Books[0].amount + qty); this.updateAmount('69pbaAR1l7TFppsFgzUK',x); }
 
    });
 
