@@ -19,6 +19,7 @@ export class BookService {
 
 
 
+
  getBook(key: string) {
  return this.db.collection("Books").doc(key).ref.get().then( doc => {
     return doc.data() ;
@@ -45,7 +46,7 @@ export class BookService {
      return book;
   }
 
- 
+
 
 
 
@@ -67,7 +68,7 @@ export class BookService {
 
 
      }
-     
+
 
    });
 
