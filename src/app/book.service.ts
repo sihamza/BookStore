@@ -12,14 +12,16 @@ export class BookService {
 
   BooksRef: AngularFirestoreCollection<Book>;
 
-  existed:boolean;
 
   constructor(private db: AngularFirestore) {
     this.BooksRef = db.collection(this.dbPath);
   }
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> a181f4be997f2f3a338b9696f4dacff04bfeed1e
 
    existesBook(gbook:any){
     this.db.collection(this.dbPath , ref => ref.where('title', '==', gbook.volumeInfo.title))
@@ -48,23 +50,11 @@ export class BookService {
     this.BooksRef.doc(`${id}`).update({ amount: x });
   }
 
+  BookFromAPI(gbook:any , qty:number , price:string):void{
+ 
+    var book:Book = new Book();
 
-
-  createBookFromApi(gbook:any , qty:number , price:string){
-
-    this.db.collection(this.dbPath , ref => ref.where('title', '==', gbook.volumeInfo.title))
-    .snapshotChanges().pipe(
-     map(changes =>
-       changes.map(c =>
-       { return { key: c.payload.doc.id,  book : c.payload.doc.data() };
-       })
-     )
-   )
-   .subscribe(Books => {
-     console.log(Books);
-     if(Books.length == 0){
-       var  book = new Book() ;
-     book.title=gbook.volumeInfo.title;
+    book.title=gbook.volumeInfo.title;
      if(gbook.volumeInfo.subtitle == null){book.subtitle="none";}else{book.subtitle=gbook.volumeInfo.subtitle;}
      if(gbook.volumeInfo.authors == null){}else{book.authors=gbook.volumeInfo.authors;}
      if(gbook.volumeInfo.publisher == null){book.publisher="none";}else{book.publisher=gbook.volumeInfo.publisher;}
@@ -75,11 +65,32 @@ export class BookService {
      if(gbook.volumeInfo.averageRating == null){book.pageCount=0;}else{book.averageRating=gbook.volumeInfo.averageRating;}
      book.price=price;
      book.amount=qty;
-     console.log(book);
-     this.createBook(book);
+     return book;
+  }
+
+ 
+
+
+
+  InsertBook(abook:any){
+
+    this.db.collection(this.dbPath , ref => ref.where('title', '==', abook.title))
+    .snapshotChanges().pipe(
+     map(changes =>
+       changes.map(c =>
+       { return { key: c.payload.doc.id,  book : c.payload.doc.data() };
+       })
+     )
+   )
+   .subscribe(Books => {
+
+     if(Books.length == 0){
+
+     this.createBook(abook);
+
 
      }
-     else{ console.log(" exist");  var x= Number(Books[0].amount + qty); this.updateAmount('69pbaAR1l7TFppsFgzUK',x); }
+     
 
    });
 

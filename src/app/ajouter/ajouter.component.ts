@@ -47,12 +47,11 @@ export class AjouterComponent implements OnInit {
 
 
   addGoogleBook(f2) {
-   this.BookService.createBookFromApi(f2.value['gbook'],f2.value['qty'],f2.value['price']) ;
+   this.Book = this.BookService.BookFromAPI(f2.value['gbook'],f2.value['qty'],f2.value['price']);
+   this.BookService.InsertBook(this.Book);
   }
 
-  newBook(): void {
-    this.Book = new Book();
-  }
+  
 
   save() {
     this.Book.title = this.BookForm.value['title'];
@@ -65,8 +64,14 @@ export class AjouterComponent implements OnInit {
     this.Book.publisher = this.BookForm.value['publisher'];
     this.Book.price = this.BookForm.value['price'];
     this.Book.amount = this.BookForm.value['amount'];
+
+
+    this.BookService.InsertBook(this.Book);
+    
+
     this.BookService.createBook(this.Book);
     this.Book = new Book();
+
   }
 
   onSubmit() {
