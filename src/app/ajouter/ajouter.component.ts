@@ -39,35 +39,36 @@ export class AjouterComponent implements OnInit {
 
   }
 
-
-
   async getSuggestions(search,author) {
     this.suggestions = await this.books.getBooks(search,author) ;
  }
 
 
   addGoogleBook(f2) {
-   this.BookService.BookFromAPI(f2.value['gbook'],f2.value['qty'],f2.value['price']) ;
-   this.BookService.InsertBook();
+   this.Book = this.BookService.BookFromAPI(f2.value['gbook'],f2.value['qty'],f2.value['price']);
+   this.BookService.InsertBook(this.Book);
   }
 
-  newBook(): void {
-    this.Book = new Book();
+  
+
+  save() {
+    this.Book.title = this.BookForm.value['title'];
+    this.Book.subtitle = this.BookForm.value['subtitle'];
+    this.Book.poster = this.BookForm.value['poster'];
+    this.Book.description = this.BookForm.value['description'];
+    this.Book.publishedDate = this.BookForm.value['publishedDate'];
+    this.Book.publisher = this.BookForm.value['publisher'];
+    this.Book.price = this.BookForm.value['price'];
+    this.Book.amount = this.BookForm.value['amount'];
+
+    this.BookService.InsertBook(this.Book);
+    
   }
 
   onSubmit() {
-    this.BookService.cBook.title = this.BookForm.value['title'];
-    this.BookService.cBook.subtitle = this.BookForm.value['subtitle'];
-    this.BookService.cBook.poster = this.BookForm.value['poster'];
-    this.BookService.cBook.description = this.BookForm.value['description'];
-    this.BookService.cBook.publishedDate = this.BookForm.value['publishedDate'];
-    this.BookService.cBook.publisher = this.BookForm.value['publisher'];
-    this.BookService.cBook.price = this.BookForm.value['price'];
-    this.BookService.cBook.amount = this.BookForm.value['amount'];
-
-    this.BookService.InsertBook();
+    console.log("submit done !");
+    this.save();
   }
-
 
   onReset() {
     this.BookForm.reset();

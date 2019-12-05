@@ -13,8 +13,6 @@ export class BookService {
   BooksRef: AngularFirestoreCollection<Book>;
 
 
-  cbook:Book = new Book();
-
   constructor(private db: AngularFirestore) {
     this.BooksRef = db.collection(this.dbPath);
   }
@@ -48,27 +46,30 @@ export class BookService {
   }
 
   BookFromAPI(gbook:any , qty:number , price:string):void{
-    var  book = new Book() ;
+ 
+    var book:Book = new Book();
+
     book.title=gbook.volumeInfo.title;
-     if(gbook.volumeInfo.subtitle == null){this.cbook.subtitle="none";}else{this.cbook.subtitle=gbook.volumeInfo.subtitle;}
-     if(gbook.volumeInfo.authors == null){}else{this.cbook.authors=gbook.volumeInfo.authors;}
-     if(gbook.volumeInfo.publisher == null){this.cbook.publisher="none";}else{this.cbook.publisher=gbook.volumeInfo.publisher;}
-     if(gbook.volumeInfo.description == null){this.cbook.description="none";}else{this.cbook.description=gbook.volumeInfo.description;}
-     if(gbook.volumeInfo.publishedDate == null){this.cbook.publishedDate="none";}else{this.cbook.publishedDate=gbook.volumeInfo.publishedDate;}
-     if(gbook.volumeInfo.imageLinks.thumbnail == null){this.cbook.poster="https://www.forewordreviews.com/books/covers/mountains-of-the-world.jpg";}else{book.poster=gbook.volumeInfo.imageLinks.thumbnail;}
-     if(gbook.volumeInfo.pageCount == null){this.cbook.pageCount=0;}else{this.cbook.pageCount=gbook.volumeInfo.pageCount;}
-     if(gbook.volumeInfo.averageRating == null){this.cbook.pageCount=0;}else{this.cbook.averageRating=gbook.volumeInfo.averageRating;}
-     this.cbook.price=price;
-     this.cbook.amount=qty;
+     if(gbook.volumeInfo.subtitle == null){book.subtitle="none";}else{book.subtitle=gbook.volumeInfo.subtitle;}
+     if(gbook.volumeInfo.authors == null){}else{book.authors=gbook.volumeInfo.authors;}
+     if(gbook.volumeInfo.publisher == null){book.publisher="none";}else{book.publisher=gbook.volumeInfo.publisher;}
+     if(gbook.volumeInfo.description == null){book.description="none";}else{book.description=gbook.volumeInfo.description;}
+     if(gbook.volumeInfo.publishedDate == null){book.publishedDate="none";}else{book.publishedDate=gbook.volumeInfo.publishedDate;}
+     if(gbook.volumeInfo.imageLinks.thumbnail == null){book.poster="https://www.forewordreviews.com/books/covers/mountains-of-the-world.jpg";}else{book.poster=gbook.volumeInfo.imageLinks.thumbnail;}
+     if(gbook.volumeInfo.pageCount == null){book.pageCount=0;}else{book.pageCount=gbook.volumeInfo.pageCount;}
+     if(gbook.volumeInfo.averageRating == null){book.pageCount=0;}else{book.averageRating=gbook.volumeInfo.averageRating;}
+     book.price=price;
+     book.amount=qty;
+     return book;
   }
 
  
 
 
 
-  InsertBook(){
+  InsertBook(abook:any){
 
-    this.db.collection(this.dbPath , ref => ref.where('title', '==', this.cBook.title))
+    this.db.collection(this.dbPath , ref => ref.where('title', '==', abook.title))
     .snapshotChanges().pipe(
      map(changes =>
        changes.map(c =>
@@ -80,12 +81,11 @@ export class BookService {
 
      if(Books.length == 0){
 
-     console.log(this.cBook);
-     this.createBook(this.cBook);
+     this.createBook(abook);
 
 
      }
-     else{ console.log(" exist");  var x= Number(Books[0].amount + this.cBook.qty); this.updateAmount('69pbaAR1l7TFppsFgzUK',x); }
+     
 
    });
 
