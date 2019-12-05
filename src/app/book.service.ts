@@ -17,11 +17,6 @@ export class BookService {
     this.BooksRef = db.collection(this.dbPath);
   }
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> a181f4be997f2f3a338b9696f4dacff04bfeed1e
 
    existesBook(gbook:any){
     this.db.collection(this.dbPath , ref => ref.where('title', '==', gbook.volumeInfo.title))
@@ -68,7 +63,7 @@ export class BookService {
      return book;
   }
 
- 
+
 
 
 
@@ -90,7 +85,7 @@ export class BookService {
 
 
      }
-     
+
 
    });
 
