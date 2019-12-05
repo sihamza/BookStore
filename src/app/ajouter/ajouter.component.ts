@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GbooksService } from "../gbooks.service" ;
 import { Book } from '../Book';
 import { BookService } from '../Book.service';
-import {FormGroup,FormControl,Validators} from '@angular/forms';
+import { FormGroup,FormControl,Validators } from '@angular/forms';
 
 
 @Component({
@@ -51,7 +51,7 @@ export class AjouterComponent implements OnInit {
    this.BookService.InsertBook(this.Book);
   }
 
-  
+
 
   save() {
     this.Book.title = this.BookForm.value['title'];
@@ -64,25 +64,17 @@ export class AjouterComponent implements OnInit {
     this.Book.publisher = this.BookForm.value['publisher'];
     this.Book.price = this.BookForm.value['price'];
     this.Book.amount = this.BookForm.value['amount'];
-
-
+    /* this.BookForm.value as Book */
     this.BookService.InsertBook(this.Book);
-    
-
-    this.BookService.createBook(this.Book);
-    this.Book = new Book();
-
   }
 
   onSubmit() {
-    console.log("submit done !");
     this.save();
   }
 
   onReset() {
     this.BookForm.reset();
-    console.log("Reset !");
-}
+  }
 
 
 }

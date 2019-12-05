@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AjouterComponent } from '../ajouter/ajouter.component';
-//import { GBooksService } from "../gBooks.service" ;
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { BookService } from '../Book.service';
 import { map } from 'rxjs/operators';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -21,10 +22,9 @@ export class DashboardComponent implements OnInit {
   Books:any[] ;
   search ;
 
-  constructor(public dialog: MatDialog , private authService: AuthService , private router: Router, private BookService: BookService  ) { }
+  constructor(public dialog: MatDialog , private _snackBar: MatSnackBar , private authService: AuthService , private router: Router, private BookService: BookService  ) { }
 
   async ngOnInit() {
-    //this.Books = await this.Books.getBooks('harry potter') ;
     this.loged = await this.authService.isloged() ;
     this.getBooksList();
   }
@@ -52,6 +52,7 @@ export class DashboardComponent implements OnInit {
 
     deleteBooks() {
       this.BookService.deleteAll();
+      this.openSnackBar(' All books are deleted !', 'close')
     }
 
     getSearch() {
@@ -60,6 +61,13 @@ export class DashboardComponent implements OnInit {
       }) : this.Books  ;
 
     }
+
+    openSnackBar(message: string, action: string) {
+      this._snackBar.open(message, action, {
+        duration: 2000,
+      });
+    }
+
 
 
 }

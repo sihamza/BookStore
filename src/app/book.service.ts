@@ -29,12 +29,12 @@ export class BookService {
 
 
   BookFromAPI(gbook:any , qty:number , price:string):void{
- 
+
     var book:Book = new Book();
 
     book.title=gbook.volumeInfo.title;
      if(gbook.volumeInfo.subtitle == null){book.subtitle="none";}else{book.subtitle=gbook.volumeInfo.subtitle;}
-     if(gbook.volumeInfo.authors == null){}else{book.authors=gbook.volumeInfo.authors;}
+     if(gbook.volumeInfo.authors == null){book.author='none'}else{book.author=gbook.volumeInfo.authors[0];}
      if(gbook.volumeInfo.publisher == null){book.publisher="none";}else{book.publisher=gbook.volumeInfo.publisher;}
      if(gbook.volumeInfo.description == null){book.description="none";}else{book.description=gbook.volumeInfo.description;}
      if(gbook.volumeInfo.publishedDate == null){book.publishedDate="none";}else{book.publishedDate=gbook.volumeInfo.publishedDate;}
