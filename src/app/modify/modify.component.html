@@ -1,38 +1,48 @@
-<div class="container"  id="container">
-	<div class="form-container sign-up-container">
-		<form #f="ngForm" >
+<div class="container  p-5"  id="container">
+	<div class="form-container">
+		<form form [formGroup]="BookForm" (ngSubmit)="onSubmit()">
 			<h5>Custom Book</h5>
 			<mat-form-field class="full-w" >
-	 		<input matInput placeholder="Title :"  name="title" ngModel aria-label="title" >
+	 		<input matInput type="text" placeholder="Title :"  id="title" required  name="title" formControlName="title" >
 			</mat-form-field>
 			<mat-form-field class="full-w" >
-	 		<input matInput placeholder="Subtitle :" name="subtitle" ngModel aria-label="title" >
+	 		<input matInput type="text" placeholder="Subtitle :"  id="subtitle" required  name="subtitle" formControlName="subtitle">
 			</mat-form-field>
 			<mat-form-field class="full-w" >
-	 		<input matInput placeholder="Poster URL :" name="poster" ngModel aria-label="title" >
+	 		<input matInput type="text" placeholder="Author :"  id="author" required  name="author" formControlName="author" >
+			</mat-form-field>
+			<mat-form-field class="full-w" >
+	 		<input matInput type="text" placeholder="Poster URL :"  id="poster" required  name="poster" formControlName="poster">
 			</mat-form-field>
 			<mat-form-field class="full-w"  >
-    			<textarea matInput name="description" placeholder="Description :"></textarea>
+    			<textarea matInput type="text"  placeholder="Description :"  id="description" required  name="description" formControlName="description"></textarea>
   		</mat-form-field>
-			<mat-form-field class="full-w">
-  			<input matInput name="date" [matDatepicker]="picker" placeholder="Publishing date : ">
+			<div class="d-flex full-w ">
+			<mat-form-field class="pr-1" style="width:50%">
+  			<input matInput type="text" [matDatepicker]="picker" placeholder="Publishing date : " id="publishedDate" required  name="publishedDate" formControlName="publishedDate">
 			  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
   			<mat-datepicker touchUi #picker></mat-datepicker>
 			</mat-form-field>
-			<mat-form-field class="full-w" >
-	 		<input matInput name="publisher" placeholder="Publisher :"  ngModel aria-label="title" >
+			<mat-form-field class="pl-1" style="width:50%" >
+	 		<input matInput type="number" placeholder="Pages :"  id="pageCount" required  name="pageCount" formControlName="pageCount">
 			</mat-form-field>
-			<div>
-				<mat-form-field class="full-w" >
+			</div>
+			<mat-form-field class="full-w" >
+	 		<input matInput type="text" placeholder="Publisher :"  id="publisher" required  name="publisher" formControlName="publisher">
+			</mat-form-field>
+
+			<div class="d-flex full-w ">
+				<mat-form-field class="px-1" style="width:50%"  >
 				<mat-icon matPrefix class="mx-3" style="font-size : 18px " color="primary" > attach_money </mat-icon>
-				<input matInput type="number" placeholder="Price :"  #price aria-label="title" >
+				<input matInput  type="number" placeholder="Price :"  id="price" required  name="price" formControlName="price">
 				</mat-form-field>
-				<mat-form-field class="full-w" >
+				<mat-form-field class="px-1" style="width:50%" >
 				<mat-icon matPrefix class="mx-3" style="font-size : 18px " color="primary"> shopping_cart </mat-icon>
-				<input matInput type="number" placeholder="Quantity :"  #price aria-label="title" >
+				<input matInput type="number" placeholder="Quantity :"  id="amount" required  name="amount" formControlName="amount">
 				</mat-form-field>
 				</div>
-			<button mat-button mat-raised-button (click)="addBook(f)" class="m-2" color="primary"> <mat-icon> post_add </mat-icon> Add </button>
+				<div class="list-group list-group-horizontal">
+			<button mat-button mat-raised-button type="submit" class="m-2" color="accent"> <mat-icon> post_add </mat-icon> Modify </button> </div>
 		</form>
 	</div>
 </div>

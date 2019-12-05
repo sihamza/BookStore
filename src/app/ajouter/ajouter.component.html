@@ -3,39 +3,47 @@
 		<form form [formGroup]="BookForm" (ngSubmit)="onSubmit()">
 			<h5>Custom Book</h5>
 			<mat-form-field class="full-w" >
-	 		<input matInput type="text" placeholder="Title :" class="form-control" id="title" required  name="title" formControlName="title" >
+	 		<input matInput type="text" placeholder="Title :"  id="title" required  name="title" formControlName="title" >
 			</mat-form-field>
 			<mat-form-field class="full-w" >
-	 		<input matInput type="text" placeholder="Subtitle :" class="form-control" id="subtitle" required  name="subtitle" formControlName="subtitle">
+	 		<input matInput type="text" placeholder="Subtitle :"  id="subtitle" required  name="subtitle" formControlName="subtitle">
 			</mat-form-field>
 			<mat-form-field class="full-w" >
-	 		<input matInput type="text" placeholder="Poster URL :" class="form-control" id="poster" required  name="poster" formControlName="poster">
+	 		<input matInput type="text" placeholder="Author :"  id="author" required  name="author" formControlName="author" >
+			</mat-form-field>
+			<mat-form-field class="full-w" >
+	 		<input matInput type="text" placeholder="Poster URL :"  id="poster" required  name="poster" formControlName="poster">
 			</mat-form-field>
 			<mat-form-field class="full-w"  >
-    			<textarea matInput type="text"  placeholder="Description :" class="form-control" id="description" required  name="description" formControlName="description"></textarea>
+    			<textarea matInput type="text"  placeholder="Description :"  id="description" required  name="description" formControlName="description"></textarea>
   		</mat-form-field>
-			<mat-form-field class="full-w">
-  			<input matInput type="text" [matDatepicker]="picker" placeholder="Publishing date : " class="form-control" id="publishedDate" required  name="publishedDate" formControlName="publishedDate">
+			<div class="d-flex full-w ">
+			<mat-form-field class="pr-1" style="width:50%">
+  			<input matInput type="text" [matDatepicker]="picker" placeholder="Publishing date : " id="publishedDate" required  name="publishedDate" formControlName="publishedDate">
 			  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
   			<mat-datepicker touchUi #picker></mat-datepicker>
 			</mat-form-field>
+			<mat-form-field class="pl-1" style="width:50%" >
+	 		<input matInput type="number" placeholder="Pages :"  id="pageCount" required  name="pageCount" formControlName="pageCount">
+			</mat-form-field>
+			</div>
 			<mat-form-field class="full-w" >
-	 		<input matInput type="text" placeholder="Publisher :" class="form-control" id="publisher" required  name="publisher" formControlName="publisher">
+	 		<input matInput type="text" placeholder="Publisher :"  id="publisher" required  name="publisher" formControlName="publisher">
 			</mat-form-field>
 
-			<div class="list-group list-group-horizontal">
-				<mat-form-field class="full-w" style="width: 152px;" >
+			<div class="d-flex full-w ">
+				<mat-form-field class="px-1" style="width:50%"  >
 				<mat-icon matPrefix class="mx-3" style="font-size : 18px " color="primary" > attach_money </mat-icon>
-				<input matInput  type="number" placeholder="Price :" class="form-control" id="price" required  name="price" formControlName="price">
+				<input matInput  type="number" placeholder="Price :"  id="price" required  name="price" formControlName="price">
 				</mat-form-field>
-				<mat-form-field class="full-w" style="width: 152px;" >
+				<mat-form-field class="px-1" style="width:50%" >
 				<mat-icon matPrefix class="mx-3" style="font-size : 18px " color="primary"> shopping_cart </mat-icon>
-				<input matInput type="number" placeholder="Quantity :" class="form-control" id="amount" required  name="amount" formControlName="amount">
+				<input matInput type="number" placeholder="Quantity :"  id="amount" required  name="amount" formControlName="amount">
 				</mat-form-field>
 				</div>
 				<div class="list-group list-group-horizontal">
 			<button mat-button mat-raised-button type="submit" class="m-2" color="primary"> <mat-icon> post_add </mat-icon> Add </button>
-			<button mat-button mat-raised-button type="reset" (click)="onReset()" class="m-2 btn btn-secondary" > Reset </button>
+			<button mat-button mat-raised-button type="reset" (click)="onReset()" class="m-2 btn btn-secondary" color="warn" > Reset </button>
 			</div>
 		</form>
 	</div>
