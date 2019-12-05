@@ -7,9 +7,9 @@
         </div>
     </mat-card>
     <mat-card  *ngIf="book" class="mat-elevation-z2 full-w p-4 mt-3  blueB full-h d-flex">
-     <img mat-card-image [src]="book.poster" class="m-5" [alt]="book.title">
+     <img mat-card-image (error)="placeholder(poster)" #poster [src]="book.poster" class="m-5" [alt]="book.title">
 
-     <div class="m-5">
+     <div class="m-5 full-w">
       <mat-card-title class="text-center" > {{ book.title }} </mat-card-title>
       <mat-card-subtitle class="text-center" > {{ book.subtitle }}</mat-card-subtitle>
       <mat-divider [inset]="true" class="my-4" ></mat-divider>

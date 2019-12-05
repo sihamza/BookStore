@@ -28,7 +28,7 @@ export class BookService {
   }
 
 
-  BookFromAPI(gbook:any , qty:number , price:string):void{
+  BookFromAPI(gbook:any , qty:number , price:string) : Book {
 
     var book:Book = new Book();
 

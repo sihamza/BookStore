@@ -39,7 +39,7 @@
 
               <a [routerLink]="['/book/', book.key]" class="ajax-popup-link">
 
-              <img [src]="book.poster" alt="book-cover">
+              <img [src]="book.poster"  (error)="placeholder(poster)" #poster  alt="book-cover">
             <span class="border"></span>
     </a>
     <div class="edge"><div class="edge-border"></div></div>

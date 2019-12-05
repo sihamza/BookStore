@@ -30,7 +30,12 @@ export class DashboardComponent implements OnInit {
   }
 
   openDialog() {
-    this.dialog.open(AjouterComponent, { panelClass: 'custom-dialog-container' , height: '90%' }); }
+    this.dialog.open(AjouterComponent, { panelClass: 'custom-dialog-container'  , height: '90%' }); }
+
+  placeholder( img ) {
+    img.src = "https://sylvie-corbelin.com/wp-content/uploads/2015/02/import_placeholder.png" ;
+    img.height = 150 ;
+  }
 
   async logout() {
       await this.authService.logout();

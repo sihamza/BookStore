@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormControl,Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material';
+import { MAT_DIALOG_DATA , MatDialogRef } from '@angular/material';
 import { BookService } from '../Book.service';
 import { Router } from '@angular/router';
 import { Book } from '../Book';
 import { Inject } from '@angular/core';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-modify',
@@ -18,7 +19,7 @@ export class ModifyComponent implements OnInit {
 
 
 
-  constructor( @Inject(MAT_DIALOG_DATA) public data : any , private router: Router , private BookService: BookService ) {
+  constructor(  public dialogRef: MatDialogRef<ModifyComponent> , @Inject(MAT_DIALOG_DATA) public data : any , private router: Router , private BookService: BookService ) {
    }
 
   ngOnInit() {
@@ -29,17 +30,17 @@ export class ModifyComponent implements OnInit {
       poster:new FormControl(this.data.book.poster + '' ,Validators.required),
       pageCount:new FormControl(this.data.book.pageCount + '' ,Validators.required),
       description:new FormControl(this.data.book.description + '' ,Validators.required),
-      publishedDate:new FormControl(this.data.book.publishedDate + '' ,Validators.required),
+      publishedDate:new FormControl(new Date(this.data.book.publishedDate) ,Validators.required),
       publisher:new FormControl(this.data.book.publisher + '' ,Validators.required),
       price:new FormControl(this.data.book.price + '' ,Validators.required),
       amount:new FormControl(this.data.book.amount + '' ,Validators.required),
       });
-      console.log( this.BookForm ) ;
   }
 
   update() {
+    this.BookForm.value['publishedDate'] = moment(this.BookForm.value['publishedDate']).format('YYYY-MM-DD') ;
     this.BookService.updateBook( this.data.key , this.BookForm.value as Book ) ;
-    this.router.navigate(['book/' , this.data.key ]);
+    this.dialogRef.close();
   }
 
 }

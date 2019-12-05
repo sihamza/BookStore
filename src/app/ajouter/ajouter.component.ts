@@ -3,6 +3,7 @@ import { GbooksService } from "../gbooks.service" ;
 import { Book } from '../Book';
 import { BookService } from '../Book.service';
 import { FormGroup,FormControl,Validators } from '@angular/forms';
+import * as moment from 'moment';
 
 
 @Component({
@@ -60,11 +61,12 @@ export class AjouterComponent implements OnInit {
     this.Book.author = this.BookForm.value['author'];
     this.Book.pageCount = this.BookForm.value['pageCount'];
     this.Book.description = this.BookForm.value['description'];
-    this.Book.publishedDate = this.BookForm.value['publishedDate'];
+    this.Book.publishedDate = moment(this.BookForm.value['publishedDate']).format('YYYY/MM/DD') ;
     this.Book.publisher = this.BookForm.value['publisher'];
     this.Book.price = this.BookForm.value['price'];
     this.Book.amount = this.BookForm.value['amount'];
     /* this.BookForm.value as Book */
+    console.log(moment(this.BookForm.value['publishedDate']).format('YYYY-MM-DD'));
     this.BookService.InsertBook(this.Book);
   }
 
