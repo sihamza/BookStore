@@ -17,26 +17,7 @@ export class BookService {
     this.BooksRef = db.collection(this.dbPath);
   }
 
-<<<<<<< HEAD
 
-
-=======
->>>>>>> a181f4be997f2f3a338b9696f4dacff04bfeed1e
-
-   existesBook(gbook:any){
-    this.db.collection(this.dbPath , ref => ref.where('title', '==', gbook.volumeInfo.title))
-    .snapshotChanges().pipe(
-     map(changes =>
-       changes.map(c =>
-       { return { key: c.payload.doc.id,  book : c.payload.doc.data() };
-       })
-     )
-   )
-   .subscribe(Books => {
-     if(Books.length == 0){ console.log("not exist");}
-     else{ console.log(" exist");  var x = Books[0].amount++; this.updateAmount(Book[0].key,x); }
-    });
-  }
 
  getBook(key: string) {
  return this.db.collection("Books").doc(key).ref.get().then( doc => {
@@ -45,10 +26,6 @@ export class BookService {
 
   }
 
-  updateAmount(id: string,x: number) {
-    console.log('User `${id}` amount updated')
-    this.BooksRef.doc(`${id}`).update({ amount: x });
-  }
 
   BookFromAPI(gbook:any , qty:number , price:string):void{
  
