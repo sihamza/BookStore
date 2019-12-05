@@ -1,8 +1,8 @@
 export class Book {
-  
+
   title:String;
   subtitle:String;
-  authors: String[];
+  authors: String;
   publisher:String;
   publishedDate:string;
   description:String;

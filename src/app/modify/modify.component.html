@@ -1,6 +1,6 @@
 <div class="container  p-5"  id="container">
 	<div class="form-container">
-		<form form [formGroup]="BookForm" (ngSubmit)="onSubmit()">
+		<form form [formGroup]="BookForm" (ngSubmit)="update()">
 			<h5>Custom Book</h5>
 			<mat-form-field class="full-w" >
 	 		<input matInput type="text" placeholder="Title :"  id="title" required  name="title" formControlName="title" >

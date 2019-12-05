@@ -18,8 +18,8 @@ export class BookService {
     this.BooksRef = db.collection(this.dbPath);
   }
 
-  
-  
+
+
 
    existesBook(gbook:any){
     this.db.collection(this.dbPath , ref => ref.where('title', '==', gbook.volumeInfo.title))
@@ -32,7 +32,7 @@ export class BookService {
    )
    .subscribe(Books => {
      if(Books.length == 0){ console.log("not exist");}
-     else{ console.log(" exist");  var x = Books[0].amount++; updateAmount(Book[0].key,x); }
+     else{ console.log(" exist");  var x = Books[0].amount++; this.updateAmount(Book[0].key,x); }
     });
   }
 

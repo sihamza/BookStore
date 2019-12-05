@@ -26,7 +26,7 @@ export class BookComponent implements OnInit {
 
   openDialog() {
     this.dialog.open(ModifyComponent, { panelClass: 'custom-dialog-container' , height: '90%'  , data : {
-    book : this.book
+    book : this.book , key : this.active_router.snapshot.params.key
   } }); }
 
   async deleteBook() {
