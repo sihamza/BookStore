@@ -16,6 +16,7 @@ export class DashboardComponent implements OnInit {
 
   username : String = 'Chocofoxy' ;
   loged = true ;
+  filteredBooks ;
   date : Date = new Date() ;
   Books:any[] ;
   search ;
@@ -45,13 +46,19 @@ export class DashboardComponent implements OnInit {
         )
       ).subscribe(Books => {
         this.Books = Books;
-        console.log(this.Books);
-
+        this.filteredBooks = this.Books ;
       });
     }
 
     deleteBooks() {
       this.BookService.deleteAll();
+    }
+
+    getSearch() {
+      this.filteredBooks = (this.search || this.search != null) ? this.Books.filter(  ( book ) => {
+         return book.title.toUpperCase().indexOf(this.search.toUpperCase()) != -1 ;
+      }) : this.Books  ;
+
     }
 
 

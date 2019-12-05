@@ -15,12 +15,12 @@ export class AjouterComponent implements OnInit {
   Book: Book = new Book();
 
   api : boolean = true ;
-  
+
   suggestions = [] ;
 
   search:string;
 
-  
+
   BookForm:FormGroup=new FormGroup({
     title:new FormControl('',Validators.required),
     subtitle:new FormControl('',Validators.required),
@@ -36,7 +36,7 @@ export class AjouterComponent implements OnInit {
   constructor(private books : GbooksService,private BookService: BookService ) { }
 
   ngOnInit() {
-    
+
   }
 
   async getSuggestions(search,author) {

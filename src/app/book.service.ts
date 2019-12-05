@@ -90,6 +90,7 @@ export class BookService {
     this.BooksRef.add({...Book});
   }
 
+
    updateBook(key: string, value: Book) {
      this.BooksRef.doc(key).update(value);
   }

@@ -22,15 +22,15 @@
     <mat-form-field appearance="outline" class="full-w"  >
       <mat-label> Search for a book </mat-label>
       <mat-icon matPrefix class="m-2"  [color]=" error ? 'warn' : 'primary'" > search </mat-icon>
-      <input matInput (focus)="error = false " [(ngModel)]="search" type="search" placeholder="ex : Harry Potter">
-      <button mat-button *ngIf="search" matSuffix mat-icon-button aria-label="Clear" (click)="search=''">
+      <input matInput (keyup)="getSearch()" (focus)="error = false " [(ngModel)]="search" type="search" placeholder="ex : Harry Potter">
+      <button mat-button  *ngIf="search" matSuffix mat-icon-button aria-label="Clear" (click)="search=null ; getSearch()">
         <mat-icon>close</mat-icon>
       </button>
     </mat-form-field>
     </div>
     <mat-divider class="p-3" [inset]="true" ></mat-divider>
     <div class="d-flex flex-wrap">
-   <div style="width:10%;" *ngFor="let book of Books" class="m-5">
+   <div style="width:10%;" *ngFor="let book of filteredBooks" class="m-5">
       <div class="book-wrap" [matTooltip]="book.title">
         <div class="book">
           <div class="shadow"></div>
