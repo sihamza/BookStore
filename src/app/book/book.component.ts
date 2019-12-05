@@ -19,14 +19,15 @@ export class BookComponent implements OnInit {
 
     async ngOnInit() {
     this.book = await this.bookService.getBook(this.active_router.snapshot.params.key) ;
-    console.log(this.book);
     if ( !this.book ) {
       this.router.navigate(['dashboard']);
     }
   }
 
   openDialog() {
-    this.dialog.open(ModifyComponent, { panelClass: 'custom-dialog-container' , height: '90%' }); }
+    this.dialog.open(ModifyComponent, { panelClass: 'custom-dialog-container' , height: '90%'  , data : {
+    book : this.book
+  } }); }
 
   async deleteBook() {
     await this.bookService.deleteBook(this.active_router.snapshot.params.key) ;
