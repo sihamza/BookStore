@@ -44,7 +44,7 @@
 				</div>
 				<div class="list-group list-group-horizontal">
 			<button mat-button mat-raised-button type="submit" [disabled]="!BookForm.valid" class="m-2" color="primary"> <mat-icon> post_add </mat-icon> Add </button>
-			<button mat-button mat-raised-button type="reset" (click)="onReset()" class="m-2 btn btn-secondary" color="warn" > Reset </button>
+			<button mat-button mat-raised-button type="reset" (click)="onResetCustom()" class="m-2 btn btn-secondary" color="warn" > Reset </button>
 			</div>
 		</form>
 	</div>
@@ -76,8 +76,11 @@
 				<input matInput type="number" placeholder="Quantity :"  name="qty" ngModel  required>
 				</mat-form-field>
 				</div>
-      <button mat-button mat-raised-button class="m-2" [disabled]="f2.invalid" color="primary"> <mat-icon> post_add </mat-icon> Add </button>
-		</form>
+				<div class="list-group list-group-horizontal">
+	  <button mat-button mat-raised-button class="m-2" [disabled]="f2.invalid" color="primary"> <mat-icon> post_add </mat-icon> Add </button>
+	  <button mat-button mat-raised-button type="reset" (click)="onResetAPI(f2)" class="m-2 btn btn-secondary" color="warn" > Reset </button>
+			</div>	
+	</form>
 	</div>
 	<div class="overlay-container">
 		<div class="overlay">

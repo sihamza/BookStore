@@ -74,9 +74,15 @@ export class AjouterComponent implements OnInit {
     this.save();
   }
 
-  onReset() {
+  onResetCustom() {
     this.BookForm.reset();
   }
+
+  onResetAPI(f2){
+    f2.reset();
+  }
+
+
 
 
 }
